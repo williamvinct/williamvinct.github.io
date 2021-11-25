@@ -1,0 +1,430 @@
+<div id="ajax-page" class="ajax-page-content">
+    <div class="ajax-page-wrapper">
+        <div class="ajax-page-nav">
+            <div class="nav-item ajax-page-prev-next">
+                <a class="ajax-page-load" href="portfolio-1.html"><i class="lnr lnr-chevron-left"></i></a>
+                <a class="ajax-page-load" href="portfolio-3.html"><i class="lnr lnr-chevron-right"></i></a>
+            </div>
+            <div class="nav-item ajax-page-close-button">
+                <a id="ajax-page-close-button" href="#"><i class="lnr lnr-cross"></i></a>
+            </div>
+        </div>
+
+        <div class="ajax-page-title">
+            <h1>Sales Analysis with Pandas</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-8 col-md-8 portfolio-block">
+                <div class="owl-carousel portfolio-page-carousel">
+                    <div class="item">
+                        <img src="img/portfolio/sales.jpg" alt="" />
+                    </div>
+                    <!-- <div class="item">
+                        <img src="img/portfolio/full/2.jpg" alt="" />
+                    </div>
+                    <div class="item">
+                        <img src="img/portfolio/full/3.jpg" alt="" />
+                    </div> -->
+                </div>
+
+                <div class="deskr">
+                    <br>
+                    <br>
+                    <h3>
+                        Prolusion
+                    </h3>
+                    <br>
+                    <p>
+                        In this section we will gonna do a sales analysis. So basically we will need a dataset and do
+                        some transformation or cleaning the dataset, The data that we will gonna use is a data from
+                        electronic store sales from January to Desember 2019
+                    </p>
+                    <p>
+                        Data can be found here <a href='#'>Dataset Download</a>
+                    </p>
+
+                    <p>
+                        This dataset consists of 186850 rows of data in CSV format and has several columns including:
+                    <ol>
+                        <li>Order ID</li>
+                        <li>Product</li>
+                        <li>Quantity Ordered</li>
+                        <li>Price Each</li>
+                        <li>Order Date</li>
+                        <li>Purchase Address</li>
+                    </ol>
+                    </p>
+
+
+                    <p>
+                        However, the datas we have are seperated into 12 files. To make it easier to analyst the data,
+                        first we will need to compile the data into 1 file
+                    </p>
+                    <b><i>Note : This project is using Google Colab</i></b>
+                    <br>
+                    <br>
+                    <p>
+                        First we need to import pandas library to manage this large dataset, after that we create a
+                        variable (in this case i use 'raw') to store a command to compile 12 dataset and then export it
+                        to a single csv named 'df'
+                    </p>
+                    <img src="img/portfolio/sales analysis/1.jpg">
+                    <br>
+                    <p>
+                        Here is our compiled dataset
+                    </p>
+                    <img src="img/portfolio/sales analysis/raw.jpg">
+                    <br>
+                    <p>
+                        As we can see there is a NaN value show up, we will need to delete it or fill it up with average
+                        number or middle value depending on the case. We have to see how is the NaN value appear using
+                        this code
+                    </p>
+                    <br>
+                    <img src="img/portfolio/sales analysis/3.jpg">
+                    <img src="img/portfolio/sales analysis/Null Row.jpg">
+                    <br>
+                    <p>In this NaN pattern, its safe to delete it using simple command 'dropna'</p>
+                    <img src="img/portfolio/sales analysis/4.jpg">
+                    <img src="img/portfolio/sales analysis/clean raww.jpg">
+                    <br>
+                    <br>
+                    <p>
+                        Now the dataset is more clean, Second thing we do is create a new column ('Month') that will
+                        grab month value from 'Order Date' column
+                    </p>
+                    <br>
+                    <img src="img/portfolio/sales analysis/5.jpg">
+                    <img src="img/portfolio/sales analysis/clean raw.jpg">
+                    <br>
+                    <p>
+                        We have 'Month' column now, the problem is the column still recognized as 'Object' value. To
+                        manipulate number value we need to change it to int or float data type.
+                    </p>
+                    <br>
+                    <img src="img/portfolio/sales analysis/int.jpg">
+                    <img src="img/portfolio/sales analysis/6.jpg">
+                    <br>
+                    <p>
+                        After we executing above code, an error occur
+                    </p>
+                    <br>
+                    <img src="img/portfolio/sales analysis/error month.jpg">
+                    <br>
+                    <p>
+                        The error tell us that 'Or' value cannot be changed into 'Integer', now we will need to find The
+                        error line. Using :
+                    </p>
+                    <br>
+                    <img src="img/portfolio/sales analysis/7.jpg">
+                    <br>
+                    <p>
+                        Here is the error part
+                    </p>
+                    <br>
+                    <img src="img/portfolio/sales analysis/Or error.jpg">
+                    <br>
+                    <p>
+                        After we know the error part, we now only just deselect / exclude these error part from our main
+                        dataset and then change it again to 'int' value (Also with 'Quantity Ordered' and 'Price Each'
+                        Col)
+                    </p>
+                    <br>
+                    <img src="img/portfolio/sales analysis/10.jpg">
+                    <img src="img/portfolio/sales analysis/6.jpg">
+                    <img src="img/portfolio/sales analysis/8.jpg">
+                    <br>
+                    <p>
+                        Result :
+                    </p>
+                    <img src="img/portfolio/sales analysis/res.jpg">
+                    <br>
+                    <p>
+                        Our data looks great now, although we still need some column like 'Sales','Hour', 'City'. Lets
+                        begin with the easiest first, its Sales column that can be obtain from 'Quantity Ordered'
+                        multiplied by 'Price Each' :
+                    </p>
+                    <br>
+                    <img src="img/portfolio/sales analysis/11.jpg">
+                    <br>
+                    <p>
+                        Then we need 'Hour' column, but we need to convert 'Order Date' data type to 'Date Time'
+                    </p>
+                    <br>
+                    <img src="img/portfolio/sales analysis/12.jpg">
+                    <br>
+                    <p>
+                        After, we take the hour value by using :
+                    </p>
+                    <br>
+                    <img src="img/portfolio/sales analysis/13.jpg">
+                    <br>
+                    <p>
+                        Lastly, the City Column that we take from 'Purchase Address'. We will use apply method and a
+                        function to create this.
+                    </p>
+                    <br>
+                    <img src="img/portfolio/sales analysis/14.jpg">
+                    <br>
+                    <p>
+                        Post Code function used for catch every x value from 'Purchase Address' and then split it by
+                        using ',' and then will take value from index number 2, after that split the result again by
+                        space (' ') and take index 1. Example 917 1st St, Dallas, TX 75001 - > [917 1st St, Dallas, TX
+                        75001] -> [TX 75001] -> [TX]
+                    </p>
+                    <p>
+                        Apply method is basically the same with post code, but we only split it once.
+                    </p>
+                    <p>
+                        Now we have all column we need.
+                    </p>
+                    <br>
+                    <img src="img/portfolio/sales analysis/All data.jpg">
+                    <br>
+                    <p>
+                        By all of this column, now we can answer some of question about this dataset
+                    </p>
+                    <ol>
+                        <li>What was the best month of sales ? and how much ?</li>
+                        <li>What city had the biggest number of sales ?</li>
+                        <li>What time had the highest number of sales ? and when we should display ads ?</li>
+                        <li>What products are most often sold together ?</li>
+                        <li>What product sold the most ? and why ?</li>
+                    </ol>
+                    <br>
+                    <h3>#Question 1 : Best Month of Sales</h3>
+                    <br>
+                    <p>in pandas it's easy to count each number value in a column. We can use aggregation like Sum,
+                        Count, Min, Max, Mean, Median etc. So to answer this question, we can just use Sum as well as
+                        group
+                        by to create the month column as the index. And, we will also visualize the data we
+                        get into a bar plot using help from Matplotlib.pyplot library</p>
+                    <br>
+                    <img src="img/portfolio/sales analysis/sum agg.jpg">
+                    <br>
+                    <p>
+                        Result :
+                    </p>
+                    <br>
+                    <img src="img/portfolio/sales analysis/Sales Sum.jpg">
+                    <br>
+                    <p>
+                        And now we visualize it with Matplotlib :
+                    </p>
+                    <br>
+                    <img src="img/portfolio/sales analysis/matplotlib and agg.jpg">
+                    <br>
+                    <p>
+                        Plot result :
+                    </p>
+                    <br>
+                    <img src="img/portfolio/sales analysis/Best Month of Sales.jpg">
+                    <br>
+                    <p><i>
+                            Y Axis : Total sales (In million)
+                            <br> X Axis : Month</i>
+                    </p>
+                    <p>
+                        As we can see the plot show us, the best month of selling is on Desember. Why December ? its
+                        probably because <b>Christmas</b>, people buy goods as a gift to their beloved.
+                    </p>
+                    <br>
+                    <h3>#Question 2 : Best selling by City</h3>
+                    <br>
+                    <p>For this question we just use the same script like Question 1, but we change the column to City
+                    </p>
+                    <br>
+                    <img src="img/portfolio/sales analysis/city sales.jpg">
+                    <br>
+                    <p>
+                        Result :
+                    </p>
+                    <br>
+                    <img src="img/portfolio/sales analysis/Best City of Sales.jpg">
+                    <img src="img/portfolio/sales analysis/city rsult.jpg">
+                    <br>
+                    <p><i>
+                            Y Axis : Total sales (In million)
+                            <br> X Axis : City</i>
+                    </p>
+                    <p>
+                        San Fransisco has the biggest sales value, because we are an electronics store, and in San
+                        Francisco there is also the largest IT industry area, Silicon Valley. That could be the
+                        answer to why San Francisco can generate the biggest sales. </p>
+
+                    <br>
+                    <h3>#Question 3 : What time has the biggest number of orders</h3>
+                    <br>
+                    <p>To answer this we can use 'Hour' column that we create before, and use count function instead of
+                        sum.
+                    </p>
+                    <br>
+                    <img src="img/portfolio/sales analysis/time count.jpg">
+                    <br>
+                    <p>
+                        Result :
+                    </p>
+                    <br>
+                    <img src="img/portfolio/sales analysis/time slas.jpg">
+                    <img src="img/portfolio/sales analysis/Best Time to Display Ads.jpg">
+                    <br>
+                    <p><i>
+                            Y Axis : Number of orders
+                            <br> X Axis : Time</i>
+                    </p>
+                    <p>
+                        Our line plot show that 11 - 12 pm and 18 - 20 pm generate biggest number of sales, from that
+                        information we could try to display our ads with some promotion probably 1-2 hours before these
+                        time </p>
+                    <br>
+                    <h3>#Question 4 : Product that often sold together</h3>
+                    <br>
+                    <p>As we are electronic retail shop, the customer could buy some pair of items. It's important to
+                        know which items are often purchased together, so in the future we can provide bundles that
+                        can attract the attention of our buyers
+                    </p>
+
+                    <p>So first let create a copy of dataframe and store it to 'dupli' variable, and then create a new
+                        column called 'Grouped' which will contain products from the same order_id. </p>
+                    <br>
+                    <img src="img/portfolio/sales analysis/df dupli.jpg">
+                    <br>
+
+                    <p></p>Our new dataframe
+                    should looks like this :
+                    <br>
+                    <img src="img/portfolio/sales analysis/dupli1.jpg">
+                    <br>
+                    <p>
+                        And then we drop the duplicated column using
+                    </p>
+                    <br>
+                    <img src="img/portfolio/sales analysis/drop dupli.jpg">
+                    <img src="img/portfolio/sales analysis/dupli2.jpg">
+                    <br>
+
+                    <p>After that we will need another library called itertools and collections to count and find most
+                        common items in our grouped column</p>
+                    <br>
+                    <img src="img/portfolio/sales analysis/Most common.jpg">
+                    <br>
+                    <p>
+                        Here we only use 2 items that are often purchased in 1 order, if you want to see 3 or so on, you
+                        only need to change the combination parameters value</p>
+
+                    <br>
+                    <p>
+                        Results :</p>
+                    <img src="img/portfolio/sales analysis/mos com.jpg">
+                    <br>
+                    <h3>#Question 5 : What product sold the most ? and Why ?</h3>
+                    <br>
+                    <p>To answer this last question, we will find out what products are selling the most, and also
+                        whether the items sold have a correlation with the price</p>
+                    <br>
+                    <img src="img/portfolio/sales analysis/last1.jpg">
+                    <br>
+                    <p>
+                        Result of most sold products :
+                    </p>
+                    <br>
+                    <img src="img/portfolio/sales analysis/last2.jpg">
+                    <br>
+                    <p>
+                        visualized with line plot :
+                    </p>
+                    <br>
+                    <img src="img/portfolio/sales analysis/last3.jpg">
+                    <img src="img/portfolio/sales analysis/last4.jpg">
+                    <br>
+                    <p>
+                        Lets do the same thing with 'Price Each' Column, to check the most expensive product :
+                    </p>
+                    <br>
+                    <img src="img/portfolio/sales analysis/last5.jpg">
+                    <img src="img/portfolio/sales analysis/last6.jpg">
+                    <br>
+                    <p>Okay, now we have 2 plot that show us the most sold product and the most expensive product. Lets combine them into 1 plot :</p>
+                    <br>
+                    <img src="img/portfolio/sales analysis/last7.jpg">
+                    <img src="img/portfolio/sales analysis/last8.jpg">
+                   <p>
+                       Left Y axis & Green plot Show : Quantity Ordered <br>
+                       Right Y axis & Yellow line Show : Price <br><br>
+                       The plot show us that if the green bar is high (Quantity ordered), then the yellow line must be lower(Price) this means there is a correlation between price and number of order from the producsts that we sell.
+                   </p>
+                    <br>
+                    <h4>Thank you for reading through to the end!</h4>
+                </div>
+
+                <!-- <div class="portfolio-page-video embed-responsive embed-responsive-16by9">
+                  <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/97102654?autoplay=0"></iframe>
+                </div> -->
+
+                <script type="text/javascript">
+                    jQuery(document).ready(function ($) {
+                        $('.portfolio-page-carousel').imagesLoaded(function () {
+                            $('.portfolio-page-carousel').owlCarousel({
+                                smartSpeed: 1200,
+                                items: 1,
+                                loop: true,
+                                dots: true,
+                                nav: true,
+                                navText: false,
+                                margin: 10,
+                                autoHeight: true
+                            });
+                        });
+                    });
+                </script>
+            </div>
+
+            <div class="col-sm-4 col-md-4 portfolio-block">
+                <!-- Project Description -->
+                <div class="project-description">
+                    <div class="block-title">
+                        <h3>Description</h3>
+                    </div>
+                    <ul class="project-general-info">
+                        <li>
+                            <p><i class="fa fa-user"></i> William </p>
+                        </li>
+                        <!-- <li><p><i class="fa fa-globe"></i> <a href="#" target="_blank">www.project-site.com</a></p></li> -->
+                        <li>
+                            <p><i class="fa fa-calendar"></i> 09 November 2021</p>
+                        </li>
+                    </ul>
+
+                    <p class="text-justify">Sales Analysis with Pandas</p>
+                    <!-- /Project Description -->
+
+                    <!-- Technology -->
+                    <div class="tags-block">
+                        <div class="block-title">
+                            <h3>Technology</h3>
+                        </div>
+                        <ul class="tags">
+                            <li><a>Python</a></li>
+                            <li><a>Pandas Lib</a></li>
+                            <li><a>Matplotlib</a></li>
+                        </ul>
+                    </div>
+                    <!-- /Technology -->
+
+                    <!-- Share Buttons -->
+                    <div class="btn-group share-buttons">
+                        <div class="block-title">
+                            <h3>Share</h3>
+                        </div>
+                        <a href="#" target="_blank" class="btn"><i class="fab fa-facebook-f"></i> </a>
+                        <a href="#" target="_blank" class="btn"><i class="fab fa-twitter"></i> </a>
+                        <a href="#" target="_blank" class="btn"><i class="fab fa-dribbble"></i> </a>
+                    </div>
+                    <!-- /Share Buttons -->
+                </div>
+                <!-- Project Description -->
+            </div>
+        </div>
+    </div>
+</div>

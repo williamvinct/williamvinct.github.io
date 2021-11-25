@@ -1,0 +1,327 @@
+<div id="ajax-page" class="ajax-page-content">
+    <div class="ajax-page-wrapper">
+        <div class="ajax-page-nav">
+            <div class="nav-item ajax-page-prev-next">
+                <a class="ajax-page-load" href="portfolio-3.html"><i class="lnr lnr-chevron-left"></i></a>
+                <a class="ajax-page-load" href="portfolio-2.html"><i class="lnr lnr-chevron-right"></i></a>
+            </div>
+            <div class="nav-item ajax-page-close-button">
+                <a id="ajax-page-close-button" href="#"><i class="lnr lnr-cross"></i></a>
+            </div>
+        </div>
+
+        <div class="ajax-page-title">
+            <h1>Simple ETL with Pandas and RegEx</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-8 col-md-8 portfolio-block">
+                <div class="owl-carousel portfolio-page-carousel">
+                    <div class="item">
+                        <img src="img/portfolio/etl.jpg" alt="etl" />
+                    </div>
+                    <!-- <div class="item">
+                        <img src="img/portfolio/full/2.jpg" alt="" />
+                    </div>
+                    <div class="item">
+                        <img src="img/portfolio/etl/hp4.jpg" alt="" />
+                    </div> -->
+                </div>
+
+                <div class="deskr">
+                    <br>
+                    <br>
+                    <h3>
+                        Prolusion
+                    </h3>
+                    <br>
+                    <p>
+                        Extract, Transform and Load (ETL) is a collection of processes to "move" data from one place to another. The place in question is from data sources (can be application databases, files, logs, databases from 3rd party, and others) to the data warehouse. In this section i will demonstrate a simple process of ETL, The dataset is obtained from dqthon participants (Indonesia online course) who fill out the form provided.
+                    </p>
+
+                    <p>
+                        This dataset consists of 5000 rows of data (5000 registrants) in CSV (Comma-separated values) format and has several columns including:
+                        <ol>
+                            <li>participant_id</li>
+                            <li>first_name</li>
+                            <li>last_name</li>
+                            <li>birth_date</li>
+                            <li>address</li>
+                            <li>phone_number</li>
+                            <li>country</li>
+                            <li>institute</li>
+                            <li>occupation</li>
+                            <li>register_time</li>
+                        </ol>
+                    </p>
+                    
+
+                    <p>
+                        However, in this project we will generate several columns by utilizing existing columns, so that the end of this project is the result of data transformation with several new columns apart from the 10 columns above.
+                    </p>
+                    <br>
+                    <h3>
+                        1. Extract
+                    </h3>
+                    <br>
+                    <p>
+                        Extract is the process of extracting data from sources, this data source can be relational data (SQL) or tables, nonrelational (NoSQL) or others. Before begin the extract process, first of all we have to import pandas library and call read function to read the dataset, then store it into a "df_participant" variable.
+                    </p>
+                    <br>
+                    <img src="img/portfolio/etl/1.jpg">
+                    <br>
+                    <h3>
+                        2. Transform
+                    </h3>
+                    <br>
+                    <p>
+                        Transform is the process of transforming data, or changes to data. Generally like:
+                        <ol>
+                            <li>Change the value of a column to a new value</li>
+                            <li>Creating a new column using another column</li>
+                            <li>Transpose rows to columns (or vice versa)</li>
+                            <li>Change the data format (for example the date column, or datetime which usually has non-standard values ​​or phone numbers which usually have values ​​that dont match the standard format), and others</li>
+                        </ol>
+                    </p>
+                    <br>
+                    <h4>
+                        Transform Part I - Postal Code
+                    </h4>
+                    <br>
+                    <p>
+                        Case 1 - we need a postal code from the participant so that the delivery of trophies is easier and faster to arrive. Therefore, we need to create a new column called postal_code which contains information about the postal code taken from the participant's address (address column). <br>*Note* the postal code is at the very end of the address.
+                    </p>
+                    <br>
+                    <img src="img/portfolio/etl/2.jpg">
+                    <br>
+                    <p>
+                        From the code, we use extract function to get the postal code from "address" column, and to specify what line we want to take, we use regex <b>(\d+)$</b> which mean we will take a group of one or more decimal number in the line that ended with string
+                    </p>
+                    <br>
+                    <h4>
+                        Transform Part II - City
+                    </h4>
+                    <br>
+                    <p>
+                        Case 2 - Beside postal code, we also need the city of the participant. To provide this information, we create a new column named city which is obtained from the address column. It is assumed that the city is a set of characters after the street number followed by \n (newline character) or in other languages, enter.
+                    </p>
+                    <br>
+                    <img src="img/portfolio/etl/3.jpg">
+                    <br>
+                    <p>
+                        Again, to get participant city, we use extract function and use <b>(?<=\n)(\w.+)(?=,)</b> ReGex. First group mean <b>(?<= Positive lookbehind.</b> Matches a group before the main expression without including it in the result (in this time we use newline). Second group <b>(\w.+)</b> mean match 1 or more any word character. And the last group <b>(?= Positive lookahead</b>, which matches a group after main expression without including it in the result (we use ',')
+                    </p>
+                    <h4>
+                        Transform Part III - Github
+                    </h4>
+                    <br>
+                    <p>
+                        Case 3 - One of the parameters to find out what projects the participants have worked on is from their git repository.
+
+                        In this case we use the github profile as the parameter. In this part we will get github_profile which is the github profile link of the participant.
+                        
+                        it can be seen that their github profile is a combination of lowercase first_name and last_name.
+                    </p>
+                    <br>
+                    <img src="img/portfolio/etl/4.jpg">
+                    <br>
+                    <p>
+                        For this part, we create new column called 'github_profile' which is a combination of 'https://github.com/ string with first_name and last_name + lower function()
+                    </p>
+                    <h4>
+                        Transform Part IV - Phone Number
+                    </h4>
+                    <br>
+                    <p>
+                        Problem occur when the phone numbers in our csv data have different formats. Therefore, we need to clean the mobile number data so that it has the same format. In this case let's equate the format with the rule:
+                    </p>
+                    <ul>
+                        <li>If the prefix of the mobile number is the number 62 or +62 which is the Indonesian telephone code, it is translated to 0.
+                        </li>
+                        <li>No punctuation such as opening parenthesis, closing parenthesis, strip⟶ ()-
+                            </li>
+                        <li>There is no space in the cellphone number. The column name to store the cleaning results on the cellphone number is clean_phone_number
+                        </li></ul>
+                    <br>
+                    <img src="img/portfolio/etl/5.jpg">
+                    <br>
+                    <p>
+                        To make all participant phone number in the same format, we create new column called 'cleaned_phone_number'. First we change all \+62 or 62 number to zero (0), after that in the same column we remove parenthesis or strip (if any). Lastly we remove any whitespace (\s) to get proper format. 
+                    </p>
+                    <h4>
+                        Transform Part V - Team Name
+                    </h4>
+                    <br>
+                    <p>
+                        The dataset does not currently contain team names, and we need information regarding the team names of each participant.
+
+                        The team name is the initial of values ​​from the first_name, last_name, country and institute columns.
+                        
+                        We will create a new column with the name team_name which contains the team name information from the participants.
+                    </p>
+                    <br>
+                    <img src="img/portfolio/etl/6.jpg">
+                    <br>
+                    <p>
+                        Before we create team name column, we will need to create a function to get some values from several column we defined before. First we create abbrev_name variable which will contain initial of first and last participant name (Note : %s is used for string formatting). Second is country variable, we will only take the actual values. Third is abbrev_institute, first step we will split for each institue values and then we will get a list so we able to get each values initial, lastly for this variable we will return initial values into string format. In the end this of function we will return abbrev_name,country,abbrev_institute values.
+                    </p>
+                    <h4>
+                        Transform Part VI - Email
+                    </h4>
+                    <br>
+                    <p>
+                        In this part we will need an email column of each participant with following rules :
+                    </p>
+                    <p><b>Email format:</b></p>
+                    <p>xxyy@aa.bb.[ac/com].[cc]</p>
+                    <br>
+                    <p><b>Rules :</b></p>
+                    <p>xx -> first name (first_name) in lowercase</p>
+                    <p>yy -> last name (last_name) in lowercase</p>
+                    <p>aa -> institution name</p>
+                    <br>
+                    <p><b>For the value of bb, and cc follow the value of aa. The rules:</b></p>
+                    <ul>
+                        <li>If the institution is a university, then
+                            bb -> combination of the first letters of each word of the University name in lowercase
+                            Then, followed by .ac which indicates the academy/institution of learning and followed by the pattern cc</li>
+                        <li>If the institution is not a University, then
+                            bb -> combination of the first letters of each word of the University name in lowercase
+                            Then, followed by .com. Please note that the cc pattern does not apply in this condition</li>
+                    </ul>
+                    <br>
+                    <p><b>cc -> is the participant's country of origin, as for the rules:</b></p>
+                    <ol>
+                        <li>If the number of words in the country is more than 1 then take the abbreviation of that country in lowercase</li>
+                        <li>However, if the number of words is only 1 then take the first 3 letters of the country in lowercase</li>
+                    </ol>
+                    <br>
+                    <p><b>Example :</b></p>
+                    <ul>
+                        <li>First name: Citra</li>
+                        <li>Last name: Nurdiyanti</li>
+                        <li>Institution: UD Prakasa Mandasari</li>
+                        <li>Country: Georgia</li>
+                    </ul>
+                    <p>So, her email: citranurdiyanti@upm.geo</p>
+                    <hr>
+                    <ul>
+                        <li>First name: Aris</li>
+                        <li>Last name: Setiawan</li>
+                        <li>Institution: Universitas Diponegoro</li>
+                        <li>Country: Korea Utara</li>
+                    </ul>
+                    <p>So, his email: arissetiawan@ud.ac.ku</p>
+                    <br>
+                    <img src="img/portfolio/etl/7.jpg">
+                    <br>
+                    <h4>
+                        Transform Part VII - Date of birth
+                    </h4>
+                    <br>
+                    <p>
+                        For this part we will be changing participant birth_date column to SQL date format which is YYYY-MM-DD 
+                    </p>
+                    <br>
+                    <img src="img/portfolio/etl/8.jpg">
+                    <br>
+                    <h4>Conclusion</h4>
+                    <p>We come to the end of this transform part. If we look back, our current dataset is different from the previous extract process. There are some additional columns that take advantage of the values ​​of other columns.</p>
+                    <p><b>Our dataset currently contains the following columns:</b></p>
+                    <ol>
+                        <li>participant_id: ID of the participant/participant of the hackathon. </li>
+                        <li>first_name</li>
+                        <li>last_name: </li>
+                        <li>birth_date:</li>
+                        <li>address:</li>
+                        <li>phone_number: </li>
+                        <li>country:</li>
+                        <li>institute:</li>
+                        <li>occupation: </li>
+                        <li>register_time:</li>
+                        <li>team_name: name of the participating team (combination of first name, last name, country and institution)</li>
+                        <li>postal_code: </li>
+                        <li>city:</li>
+                        <li>github_profile:</li>
+                        <li>email:</li>
+                        <li>cleaned_phone_number:</li>
+                    </ol>
+                    <br>
+                    <h3>
+                        Load
+                    </h3>
+                    <br>
+                    <p>
+                        In this load section, the data has been transformed in such a way that it fits the needs and ready to exported to several format like sql, csv, or json with DataFrame.to_(any format)() function.
+                    </p>
+                    <br>
+                    <p><i>End.</i></p>
+
+                </div>
+
+                <!-- <div class="portfolio-page-video embed-responsive embed-responsive-16by9">
+                  <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/97102654?autoplay=0"></iframe>
+                </div> -->
+
+                <script type="text/javascript">
+                    jQuery(document).ready(function($){
+                        $('.portfolio-page-carousel').imagesLoaded(function(){
+                            $('.portfolio-page-carousel').owlCarousel({
+                                smartSpeed:1200,
+                                items: 1,
+                                loop: true,
+                                dots: true,
+                                nav: true,
+                                navText: false,
+                                margin: 10,
+                                autoHeight:true
+                            });
+                        });
+                    });
+                </script>
+            </div>
+
+            <div class="col-sm-4 col-md-4 portfolio-block">
+                <!-- Project Description -->
+                <div class="project-description">
+                    <div class="block-title">
+                        <h3>Description</h3>
+                    </div>
+                    <ul class="project-general-info">
+                        <li><p><i class="fa fa-user"></i> William</p></li>
+                        <!-- <li><p><i class="fa fa-globe"></i> <a href="#" target="_blank">www.project-site.com</a></p></li> -->
+                        <li><p><i class="fa fa-calendar"></i> 12 Oct 2021</p></li>
+                    </ul>
+
+                    <p class="text-justify">Simple ETL with Pandas and ReGex</p>
+                    <!-- /Project Description -->
+
+                    <!-- Technology -->
+                    <div class="tags-block">
+                        <div class="block-title">
+                            <h3>Technology</h3>
+                        </div>
+                        <ul class="tags">
+                            <li><a>Python</a></li>
+                            <li><a>Pandas Lib</a></li>
+                            <li><a>ReGex</a></li>
+                        </ul>
+                    </div>
+                    <!-- /Technology -->
+
+                    <!-- Share Buttons -->
+                    <div class="btn-group share-buttons">
+                        <div class="block-title">
+                            <h3>Share</h3>
+                        </div>
+                        <a href="#" target="_blank" class="btn"><i class="fab fa-facebook-f"></i> </a>
+                        <a href="#" target="_blank" class="btn"><i class="fab fa-twitter"></i> </a>
+                        <a href="#" target="_blank" class="btn"><i class="fab fa-dribbble"></i> </a>
+                    </div>
+                    <!-- /Share Buttons -->
+                </div>
+                <!-- Project Description -->
+            </div>
+        </div>
+    </div>
+</div>
