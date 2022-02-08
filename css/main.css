@@ -2903,3 +2903,8 @@ blockquote {
   margin-left: 50px;
 }
 
+.dark-nav {
+  background-color: #222;
+  color: white;
+
+}
