@@ -70,8 +70,8 @@
                         to a single csv named 'df'
                     </p>
                     <iframe
-                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=680&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=import%2520pandas%2520as%2520pd%250A%250Araw%2520%253D%2520pd.concat%28map%28pd.read_csv%252C%2520%255B%27Sales_April_2019.csv%27%252C%2520%27Sales_August_2019.csv%27%252C%2520%27Sales_December_2019.csv%27%252C%2520%27Sales_February_2019.csv%27%252C%2520%27Sales_January_2019.csv%27%252C%2520%27Sales_July_2019.csv%27%252C%2520%27Sales_June_2019.csv%27%252C%2520%27Sales_March_2019.csv%27%252C%2520%27Sales_May_2019.csv%27%252C%2520%27Sales_November_2019.csv%27%252C%2520%27Sales_October_2019.csv%27%252C%2520%27Sales_September_2019.csv%27%255D%29%252C%2520ignore_index%253DTrue%29%250A%250Araw.to_csv%28%27df%27%252C%2520index%253DFalse%29%250A%250Adf%2520%253D%2520pd.read_csv%28%27df.csv%27%29"
-                        style="width: 680px; height: 459px; border:0; transform: scale(1); overflow:hidden;"
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=import%2520pandas%2520as%2520pd%250A%250Araw%2520%253D%2520pd.concat%28map%28pd.read_csv%252C%2520%255B%27Sales_April_2019.csv%27%252C%2520%27Sales_August_2019.csv%27%252C%2520%27Sales_December_2019.csv%27%252C%2520%27Sales_February_2019.csv%27%252C%2520%27Sales_January_2019.csv%27%252C%2520%27Sales_July_2019.csv%27%252C%2520%27Sales_June_2019.csv%27%252C%2520%27Sales_March_2019.csv%27%252C%2520%27Sales_May_2019.csv%27%252C%2520%27Sales_November_2019.csv%27%252C%2520%27Sales_October_2019.csv%27%252C%2520%27Sales_September_2019.csv%27%255D%29%252C%2520ignore_index%253DTrue%29%250A%250Araw.to_csv%28%27df%27%252C%2520index%253DFalse%29%250A%250Adf%2520%253D%2520pd.read_csv%28%27df.csv%27%29"
+                        style="width: 500px; height: 459px; border:0; transform: scale(1); overflow:hidden;"
                         sandbox="allow-scripts allow-same-origin">
                     </iframe>
                     <br>
@@ -87,16 +87,16 @@
                     </p>
                     <br>
                     <iframe
-                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=680&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=df%255Bdf.isnull%28%29.any%28axis%253D1%29%255D"
-                        style="width: 680px; height: 203px; border:0; transform: scale(1); overflow:hidden;"
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=df%255Bdf.isnull%28%29.any%28axis%253D1%29%255D"
+                        style="width: 500px; height: 203px; border:0; transform: scale(1); overflow:hidden;"
                         sandbox="allow-scripts allow-same-origin">
                     </iframe>
                     <img src="img/portfolio/sales analysis/Null Row.jpg">
                     <br>
                     <p>In this NaN pattern, its safe to delete it using simple command 'dropna'</p>
                     <iframe
-                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=680&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=df%2520%253D%2520df.dropna%28axis%253D0%252C%2520how%253D%27any%27%29"
-                        style="width: 680px; height: 203px; border:0; transform: scale(1); overflow:hidden;"
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=df%2520%253D%2520df.dropna%28axis%253D0%252C%2520how%253D%27any%27%29"
+                        style="width: 500px; height: 203px; border:0; transform: scale(1); overflow:hidden;"
                         sandbox="allow-scripts allow-same-origin">
                     </iframe>
                     <img src="img/portfolio/sales analysis/clean raww.jpg">
@@ -108,8 +108,8 @@
                     </p>
                     <br>
                     <iframe
-                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=680&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=df%255B%27Month%27%255D%2520%253D%2520df%255B%27Order%2520Date%27%255D.str%255B0%253A2%255D"
-                        style="width: 680px; height: 203px; border:0; transform: scale(1); overflow:hidden;"
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=df%255B%27Month%27%255D%2520%253D%2520df%255B%27Order%2520Date%27%255D.str%255B0%253A2%255D"
+                        style="width: 500px; height: 203px; border:0; transform: scale(1); overflow:hidden;"
                         sandbox="allow-scripts allow-same-origin">
                     </iframe>
                     <img src="img/portfolio/sales analysis/clean raw.jpg">
@@ -121,8 +121,8 @@
                     <br>
                     <img src="img/portfolio/sales analysis/int.jpg">
                     <iframe
-                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=680&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=df%255B%27Month%27%255D%2520%253D%2520df%255B%27Month%27%255D.astype%28%27int64%27%29"
-                        style="width: 680px; height: 203px; border:0; transform: scale(1); overflow:hidden;"
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=df%255B%27Month%27%255D%2520%253D%2520df%255B%27Month%27%255D.astype%28%27int64%27%29"
+                        style="width: 500px; height: 203px; border:0; transform: scale(1); overflow:hidden;"
                         sandbox="allow-scripts allow-same-origin">
                     </iframe>
                     <br>
@@ -138,8 +138,8 @@
                     </p>
                     <br>
                     <iframe
-                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=680&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=df%2520%253D%2520df%255B%28df%255B%27Month%27%255D%2520%253D%2520%27Or%27%29%255D"
-                        style="width: 680px; height: 203px; border:0; transform: scale(1); overflow:hidden;"
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=df%2520%253D%2520df%255B%28df%255B%27Month%27%255D%2520%253D%2520%27Or%27%29%255D"
+                        style="width: 500px; height: 203px; border:0; transform: scale(1); overflow:hidden;"
                         sandbox="allow-scripts allow-same-origin">
                     </iframe>
                     <br>
@@ -156,8 +156,8 @@
                     </p>
                     <br>
                     <iframe
-                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=680&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=df%2520%253D%2520df%255B%28df%255B%27Month%27%255D%2520%21%253D%2520%27Or%27%29%255D%250A%250Adf%255B%27Month%27%255D%2520%253D%2520df%255B%27Month%27%255D.astype%28%27int64%27%29%250A%250Adf%255B%27Quantity%2520Ordered%27%255D%2520%253D%2520pd.to_numeric%28df%255B%27Quantity%2520Ordered%27%255D%29%2520%2523change%2520to%2520int%250Adf%255B%27Price%2520Each%27%255D%2520%253D%2520pd.to_numeric%28df%255B%27Price%2520Each%27%255D%29%2520%2523change%2520to%2520float"
-                        style="width: 680px; height: 331px; border:0; transform: scale(1); overflow:hidden;"
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=df%2520%253D%2520df%255B%28df%255B%27Month%27%255D%2520%21%253D%2520%27Or%27%29%255D%250A%250Adf%255B%27Month%27%255D%2520%253D%2520df%255B%27Month%27%255D.astype%28%27int64%27%29%250A%250Adf%255B%27Quantity%2520Ordered%27%255D%2520%253D%2520pd.to_numeric%28df%255B%27Quantity%2520Ordered%27%255D%29%2520%2523change%2520to%2520int%250Adf%255B%27Price%2520Each%27%255D%2520%253D%2520pd.to_numeric%28df%255B%27Price%2520Each%27%255D%29%2520%2523change%2520to%2520float"
+                        style="width: 500px; height: 331px; border:0; transform: scale(1); overflow:hidden;"
                         sandbox="allow-scripts allow-same-origin">
                     </iframe>
                     <br>
@@ -173,8 +173,8 @@
                     </p>
                     <br>
                     <iframe
-                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=680&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=df%255B%27Sales%27%255D%2520%253D%2520df%255B%27Quantity%2520Ordered%27%255D%2520*%2520df%255B%27Price%2520Each%27%255D"
-                        style="width: 680px; height: 203px; border:0; transform: scale(1); overflow:hidden;"
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=df%255B%27Sales%27%255D%2520%253D%2520df%255B%27Quantity%2520Ordered%27%255D%2520*%2520df%255B%27Price%2520Each%27%255D"
+                        style="width: 500px; height: 203px; border:0; transform: scale(1); overflow:hidden;"
                         sandbox="allow-scripts allow-same-origin">
                     </iframe>
                     <br>
@@ -183,8 +183,8 @@
                     </p>
                     <br>
                     <iframe
-                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=680&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=df%255B%27Order%2520Date%27%255D%2520%253D%2520pd.to_datetime%28df%255B%27Order%2520Date%27%255D%29"
-                        style="width: 680px; height: 203px; border:0; transform: scale(1); overflow:hidden;"
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=df%255B%27Order%2520Date%27%255D%2520%253D%2520pd.to_datetime%28df%255B%27Order%2520Date%27%255D%29"
+                        style="width: 500px; height: 203px; border:0; transform: scale(1); overflow:hidden;"
                         sandbox="allow-scripts allow-same-origin">
                     </iframe>
                     <br>
@@ -193,8 +193,8 @@
                     </p>
                     <br>
                     <iframe
-                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=680&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=df%255B%27Hour%27%255D%2520%253D%2520df%255B%27Order%2520Date%27%255D.dt.hour"
-                        style="width: 680px; height: 203px; border:0; transform: scale(1); overflow:hidden;"
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=df%255B%27Hour%27%255D%2520%253D%2520df%255B%27Order%2520Date%27%255D.dt.hour"
+                        style="width: 500px; height: 203px; border:0; transform: scale(1); overflow:hidden;"
                         sandbox="allow-scripts allow-same-origin">
                     </iframe>
                     <br>
@@ -204,8 +204,8 @@
                     </p>
                     <br>
                     <iframe
-                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=680&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=def%2520post_code%28post%29%2520%253A%250A%2520%2520return%2520post.split%28%27%252C%27%29%255B2%255D%250A%250Adf%255B%27City%27%255D%2520%253D%2520df%255B%27Purchase%2520Address%27%255D.apply%28lambda%2520x%2520%253A%2520x.split%28%27%252C%27%29%255B1%255D%2520%252B%2520%27%2520%27%2520%252B%2520%2520%27%28%27%252B%2520post_code%28x%29.split%28%27%2520%27%29%255B1%255D%252B%27%29%27%29%250Adf.head%28%29%250A%250A%2523Or%2520for%2520more%2520simple%2520code%2520we%2520can%2520use%2520%250A%250A%2523df%255B%27City%27%255D%2520%253D%2520df%255B%27Purchase%2520Address%27%255D.str.split%28%27%252C%27%29.str%255B1%255D"
-                        style="width: 680px; height: 395px; border:0; transform: scale(1); overflow:hidden;"
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=def%2520post_code%28post%29%2520%253A%250A%2520%2520return%2520post.split%28%27%252C%27%29%255B2%255D%250A%250Adf%255B%27City%27%255D%2520%253D%2520df%255B%27Purchase%2520Address%27%255D.apply%28lambda%2520x%2520%253A%2520x.split%28%27%252C%27%29%255B1%255D%2520%252B%2520%27%2520%27%2520%252B%2520%2520%27%28%27%252B%2520post_code%28x%29.split%28%27%2520%27%29%255B1%255D%252B%27%29%27%29%250Adf.head%28%29%250A%250A%2523Or%2520for%2520more%2520simple%2520code%2520we%2520can%2520use%2520%250A%250A%2523df%255B%27City%27%255D%2520%253D%2520df%255B%27Purchase%2520Address%27%255D.str.split%28%27%252C%27%29.str%255B1%255D"
+                        style="width: 500px; height: 395px; border:0; transform: scale(1); overflow:hidden;"
                         sandbox="allow-scripts allow-same-origin">
                     </iframe>
                     <br>
@@ -244,8 +244,8 @@
                         get into a bar plot using help from Matplotlib.pyplot library</p>
                     <br>
                     <iframe
-                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=680&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=%2523aggregation%250Aresult%2520%253D%2520df.groupby%28%27Month%27%29.sum%28%29"
-                        style="width: 680px; height: 225px; border:0; transform: scale(1); overflow:hidden;"
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=%2523aggregation%250Aresult%2520%253D%2520df.groupby%28%27Month%27%29.sum%28%29"
+                        style="width: 500px; height: 225px; border:0; transform: scale(1); overflow:hidden;"
                         sandbox="allow-scripts allow-same-origin">
                     </iframe>
                     <br>
@@ -260,8 +260,8 @@
                     </p>
                     <br>
                     <iframe
-                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=680&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=import%2520matplotlib.pyplot%2520as%2520plt%250A%250Amonths%2520%253D%2520range%281%252C13%29%250Aplt.bar%28months%252C%2520result%255B%27Sales%27%255D%29%250Aplt.xticks%28months%29%250Aplt.ylabel%28%27Total%2520Sales%27%29%250Aplt.xlabel%28%27Months%27%29%250Aplt.show%28%29"
-                        style="width: 680px; height: 352px; border:0; transform: scale(1); overflow:hidden;"
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=import%2520matplotlib.pyplot%2520as%2520plt%250A%250Amonths%2520%253D%2520range%281%252C13%29%250Aplt.bar%28months%252C%2520result%255B%27Sales%27%255D%29%250Aplt.xticks%28months%29%250Aplt.ylabel%28%27Total%2520Sales%27%29%250Aplt.xlabel%28%27Months%27%29%250Aplt.show%28%29"
+                        style="width: 500px; height: 352px; border:0; transform: scale(1); overflow:hidden;"
                         sandbox="allow-scripts allow-same-origin">
                     </iframe>
                     <br>
@@ -286,8 +286,8 @@
                     </p>
                     <br>
                     <iframe
-                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=680&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=%2523aggregation%250Aresults%2520%253D%2520df.groupby%28%27City%27%29.sum%28%29%250A%250A%2523plot%250Acities%2520%253D%2520%255Bcity%2520for%2520city%252C%2520dl%2520in%2520df.groupby%28%27City%27%29%255D%250A%250Aplt.bar%28cities%252C%2520results%255B%27Sales%27%255D%29%250Aplt.ylabel%28%27City%2520Sales%27%29%250Aplt.xlabel%28%27Cities%27%29%250Aplt.xticks%28cities%252C%2520rotation%253D%27vertical%27%252C%2520size%2520%253D%25208%29%250Aplt.show%28%29"
-                        style="width: 680px; height: 416px; border:0; transform: scale(1); overflow:hidden;"
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=%2523aggregation%250Aresults%2520%253D%2520df.groupby%28%27City%27%29.sum%28%29%250A%250A%2523plot%250Acities%2520%253D%2520%255Bcity%2520for%2520city%252C%2520dl%2520in%2520df.groupby%28%27City%27%29%255D%250A%250Aplt.bar%28cities%252C%2520results%255B%27Sales%27%255D%29%250Aplt.ylabel%28%27City%2520Sales%27%29%250Aplt.xlabel%28%27Cities%27%29%250Aplt.xticks%28cities%252C%2520rotation%253D%27vertical%27%252C%2520size%2520%253D%25208%29%250Aplt.show%28%29"
+                        style="width: 500px; height: 416px; border:0; transform: scale(1); overflow:hidden;"
                         sandbox="allow-scripts allow-same-origin">
                     </iframe>
                     <br>
@@ -315,8 +315,8 @@
                     </p>
                     <br>
                     <iframe
-                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=680&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=%2523aggregation%250Adf.groupby%28%27Hour%27%29.count%28%29%250A%250A%2523plot%250Ahours%2520%253D%2520%255Bhour%2520for%2520hour%252C%2520dk%2520in%2520df.groupby%28%27Hour%27%29%255D%250A%250Aplt.plot%28hours%252C%2520df.groupby%28%255B%27Hour%27%255D%29.count%28%29%29%250Aplt.xticks%28hours%29%250Aplt.grid%28%29%250Aplt.ylabel%28%27Count%2520of%2520sales%27%29%250Aplt.xlabel%28%27Hours%27%29"
-                        style="width: 680px; height: 416px; border:0; transform: scale(1); overflow:hidden;"
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=%2523aggregation%250Adf.groupby%28%27Hour%27%29.count%28%29%250A%250A%2523plot%250Ahours%2520%253D%2520%255Bhour%2520for%2520hour%252C%2520dk%2520in%2520df.groupby%28%27Hour%27%29%255D%250A%250Aplt.plot%28hours%252C%2520df.groupby%28%255B%27Hour%27%255D%29.count%28%29%29%250Aplt.xticks%28hours%29%250Aplt.grid%28%29%250Aplt.ylabel%28%27Count%2520of%2520sales%27%29%250Aplt.xlabel%28%27Hours%27%29"
+                        style="width: 500px; height: 416px; border:0; transform: scale(1); overflow:hidden;"
                         sandbox="allow-scripts allow-same-origin">
                     </iframe>
                     <br>
@@ -347,8 +347,8 @@
                         column called 'Grouped' which will contain products from the same order_id. </p>
                     <br>
                     <iframe
-                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=680&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=dupli%2520%253D%2520df%255Bdf%255B%27Order%2520ID%27%255D.duplicated%28keep%253DFalse%29%255D%250A%250Adupli%255B%27Grouped%27%255D%2520%253D%2520dupli.groupby%28%27Order%2520ID%27%29%255B%27Product%27%255D.transform%28lambda%2520x%2520%253A%2520%27%252C%27.join%28x%29%29%250A%250Adupli.head%28%29"
-                        style="width: 680px; height: 310px; border:0; transform: scale(1); overflow:hidden;"
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=dupli%2520%253D%2520df%255Bdf%255B%27Order%2520ID%27%255D.duplicated%28keep%253DFalse%29%255D%250A%250Adupli%255B%27Grouped%27%255D%2520%253D%2520dupli.groupby%28%27Order%2520ID%27%29%255B%27Product%27%255D.transform%28lambda%2520x%2520%253A%2520%27%252C%27.join%28x%29%29%250A%250Adupli.head%28%29"
+                        style="width: 500px; height: 310px; border:0; transform: scale(1); overflow:hidden;"
                         sandbox="allow-scripts allow-same-origin">
                     </iframe>
                     <br>
@@ -363,8 +363,8 @@
                     </p>
                     <br>
                     <iframe
-                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=680&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=dupli%2520%253D%2520dupli%255B%255B%27Order%2520ID%27%252C%2520%27Grouped%27%255D%255D.drop_duplicates%28%29%250Adupli.head%28%29"
-                        style="width: 680px; height: 225px; border:0; transform: scale(1); overflow:hidden;"
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=dupli%2520%253D%2520dupli%255B%255B%27Order%2520ID%27%252C%2520%27Grouped%27%255D%255D.drop_duplicates%28%29%250Adupli.head%28%29"
+                        style="width: 500px; height: 225px; border:0; transform: scale(1); overflow:hidden;"
                         sandbox="allow-scripts allow-same-origin">
                     </iframe>
                     <img src="img/portfolio/sales analysis/dupli2.jpg">
@@ -374,8 +374,8 @@
                         common items in our grouped column</p>
                     <br>
                     <iframe
-                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=680&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=from%2520itertools%2520import%2520combinations%250Afrom%2520collections%2520import%2520Counter%250A%250Acount%2520%253D%2520Counter%28%29%250A%250Afor%2520word%2520in%2520dupli%255B%27Grouped%27%255D%2520%253A%250A%2520%2520join%2520%253D%2520word.split%28%27%252C%27%29%250A%2520%2520count.update%28Counter%28combinations%28join%252C3%29%29%29%250A%250Afor%2520key%252C%2520value%2520in%2520count.most_common%2810%29%253A%250A%2520%2520print%28key%252C%2520value%29%250A%2520%2520"
-                        style="width: 680px; height: 438px; border:0; transform: scale(1); overflow:hidden;"
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=from%2520itertools%2520import%2520combinations%250Afrom%2520collections%2520import%2520Counter%250A%250Acount%2520%253D%2520Counter%28%29%250A%250Afor%2520word%2520in%2520dupli%255B%27Grouped%27%255D%2520%253A%250A%2520%2520join%2520%253D%2520word.split%28%27%252C%27%29%250A%2520%2520count.update%28Counter%28combinations%28join%252C3%29%29%29%250A%250Afor%2520key%252C%2520value%2520in%2520count.most_common%2810%29%253A%250A%2520%2520print%28key%252C%2520value%29%250A%2520%2520"
+                        style="width: 500px; height: 438px; border:0; transform: scale(1); overflow:hidden;"
                         sandbox="allow-scripts allow-same-origin">
                     </iframe>
                     <br>
@@ -394,8 +394,8 @@
                         whether the items sold have a correlation with the price</p>
                     <br>
                     <iframe
-                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=680&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=ps%2520%253D%2520df.groupby%28%27Product%27%29%250A%250Aqt%2520%253D%2520ps.sum%28%29%255B%27Quantity%2520Ordered%27%255D%250A%250Aqt"
-                        style="width: 680px; height: 288px; border:0; transform: scale(1); overflow:hidden;"
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=ps%2520%253D%2520df.groupby%28%27Product%27%29%250A%250Aqt%2520%253D%2520ps.sum%28%29%255B%27Quantity%2520Ordered%27%255D%250A%250Aqt"
+                        style="width: 500px; height: 288px; border:0; transform: scale(1); overflow:hidden;"
                         sandbox="allow-scripts allow-same-origin">
                     </iframe>
                     <br>
@@ -410,8 +410,8 @@
                     </p>
                     <br>
                     <iframe
-                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=680&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=sold%2520%253D%2520%255Bsold%2520for%2520sold%252C%2520sl%2520in%2520df.groupby%28%27Product%27%29%255D%250A%250Aplt.plot%28sold%252C%2520qt%29%250Aplt.xticks%28sold%252C%2520rotation%253D%27vertical%27%29%250Aplt.ylabel%28%27Total%2520Product%2520Sales%27%29%250Aplt.xlabel%28%27Product%27%29"
-                        style="width: 680px; height: 310px; border:0; transform: scale(1); overflow:hidden;"
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=sold%2520%253D%2520%255Bsold%2520for%2520sold%252C%2520sl%2520in%2520df.groupby%28%27Product%27%29%255D%250A%250Aplt.plot%28sold%252C%2520qt%29%250Aplt.xticks%28sold%252C%2520rotation%253D%27vertical%27%29%250Aplt.ylabel%28%27Total%2520Product%2520Sales%27%29%250Aplt.xlabel%28%27Product%27%29"
+                        style="width: 500px; height: 310px; border:0; transform: scale(1); overflow:hidden;"
                         sandbox="allow-scripts allow-same-origin">
                     </iframe>
                     <img src="img/portfolio/sales analysis/last4.jpg">
@@ -421,8 +421,8 @@
                     </p>
                     <br>
                     <iframe
-                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=680&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=pro%2520%253D%2520df.groupby%28%27Product%27%29%250Aavrpr%2520%253D%2520pro.mean%28%29%255B%27Price%2520Each%27%255D%250A%250Amean%2520%253D%2520%255Bavr%2520for%2520avr%252C%2520avrg%2520in%2520df.groupby%28%27Product%27%29%255D%250A%250Aplt.plot%28mean%252C%2520avrpr%29%250Aplt.xticks%28mean%252C%2520rotation%253D%27vertical%27%29%250Aplt.show%28%29"
-                        style="width: 680px; height: 352px; border:0; transform: scale(1); overflow:hidden;"
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=pro%2520%253D%2520df.groupby%28%27Product%27%29%250Aavrpr%2520%253D%2520pro.mean%28%29%255B%27Price%2520Each%27%255D%250A%250Amean%2520%253D%2520%255Bavr%2520for%2520avr%252C%2520avrg%2520in%2520df.groupby%28%27Product%27%29%255D%250A%250Aplt.plot%28mean%252C%2520avrpr%29%250Aplt.xticks%28mean%252C%2520rotation%253D%27vertical%27%29%250Aplt.show%28%29"
+                        style="width: 500px; height: 352px; border:0; transform: scale(1); overflow:hidden;"
                         sandbox="allow-scripts allow-same-origin">
                     </iframe>
                     <img src="img/portfolio/sales analysis/last6.jpg">
@@ -431,8 +431,8 @@
                         combine them into 1 plot :</p>
                     <br>
                     <iframe
-                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=680&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=prices%2520%253D%2520df.groupby%28%27Product%27%29.mean%28%29%255B%27Price%2520Each%27%255D%250A%250Afig%252C%2520ax1%2520%253D%2520plt.subplots%28%29%250A%250Aax2%2520%253D%2520ax1.twinx%28%29%250Aax1.bar%28sold%252C%2520qt%252C%2520color%253D%27g%27%29%250Aax2.plot%28sold%252C%2520prices%252C%2520%27b-%27%252C%2520color%253D%27y%27%29%250A%250Aax1.set_xlabel%28%27Product%2520Name%27%29%250Aax1.set_ylabel%28%27Quantity%2520Ordered%27%29%250Aax2.set_ylabel%28%27Prices%27%29%250Aax1.set_xticklabels%28sold%252C%2520rotation%253D%27vertical%27%252C%2520size%2520%253D8%29%250A%250Aplt.show%28%29"
-                        style="width: 680px; height: 480px; border:0; transform: scale(1); overflow:hidden;"
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=prices%2520%253D%2520df.groupby%28%27Product%27%29.mean%28%29%255B%27Price%2520Each%27%255D%250A%250Afig%252C%2520ax1%2520%253D%2520plt.subplots%28%29%250A%250Aax2%2520%253D%2520ax1.twinx%28%29%250Aax1.bar%28sold%252C%2520qt%252C%2520color%253D%27g%27%29%250Aax2.plot%28sold%252C%2520prices%252C%2520%27b-%27%252C%2520color%253D%27y%27%29%250A%250Aax1.set_xlabel%28%27Product%2520Name%27%29%250Aax1.set_ylabel%28%27Quantity%2520Ordered%27%29%250Aax2.set_ylabel%28%27Prices%27%29%250Aax1.set_xticklabels%28sold%252C%2520rotation%253D%27vertical%27%252C%2520size%2520%253D8%29%250A%250Aplt.show%28%29"
+                        style="width: 500px; height: 480px; border:0; transform: scale(1); overflow:hidden;"
                         sandbox="allow-scripts allow-same-origin">
                     </iframe>
                     <img src="img/portfolio/sales analysis/last8.jpg">

@@ -47,7 +47,8 @@
                     </h2>
                     <br>
                     <p>
-                        RFM is an acronym of recency, frequency and monetary. <b>Recency</b> is about when was the last
+                        RFM is an acronym of recency, frequency and monetary. <br><br><b>Recency</b> is about when was
+                        the last
                         order
                         of a customer. It means the number of days since a customer made the last purchase.
                     </p>
@@ -60,11 +61,301 @@
                     </p>
                     <img src="img/portfolio/rfmx.png">
                     <br>
+                    <h2>
+                        The Task :
+                    </h2>
+                    <br>
+                    <p>
+                        The task itself is to analyse the data to understand the current purchasing trends and
+                        behaviours. The
+                        client is
+                        particularly interested in customer segments and their chip purchasing behaviour. Consider what
+                        metrics would help describe the customers’ purchasing behaviour.<br>
+
+                        <br>
+                        To get started, download the resource csv data files below and begin performing high level data
+                        checks such as:
+
+
+                    <ol>
+                        <li>Creating and interpreting high level summaries of the data</li>
+                        <li>Finding outliers and removing these</li>
+                        <li>Checking data formats and correcting</li>
+                    </ol>
+                    <br>
+                    Dataset :
+                    <ol>
+                        <li><a
+                                href="https://drive.google.com/file/d/1yU65UyvqvxRXlA1nDOXsIGlnfQwAtrK0/view?usp=sharing">Transaction
+                                Data</a></li>
+                        <li><a
+                                href="https://drive.google.com/file/d/1tmBo82apjjgTjbeg6SsKoIZhlboK_9oc/view?usp=sharing">Purchase
+                                Behaviour</a></li>
+                    </ol>
+                    </p>
+                    <br>
+                    <h3>1. Import Packages</h3>
                     <iframe
-  src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=auto&width=680&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=labels%2520%253D%2520%255B%27Very%2520Low%27%252C%2520%27Low%27%252C%2520%27Medium%27%252C%2520%27High%27%252C%2520%27Very%2520High%27%255D%250A%250Adef%2520cus_val%28x%29%2520%253A%250A%2520%2520u%253D%27%27%250A%2520%2520if%2520x%2520%253D%253D%252012%2520%253A%250A%2520%2520%2520%2520u%2520%253D%2520%27Very%2520High%27%250A%2520%2520elif%2520x%2520%253D%253D%252010%2520%253A%250A%2520%2520%2520%2520u%2520%253D%2520%27High%27%250A%2520%2520elif%2520x%2520%253D%253D%25208%2520%253A%250A%2520%2520%2520%2520u%2520%253D%2520%27Medium%27%250A%2520%2520else%2520%253A%250A%2520%2520%2520%2520u%2520%253D%2520%27Low%27%250A%2520%2520return%2520u%250A%250Acustomer_grp%255B%27CUSTOMER_VALUE%27%255D%2520%253D%2520pd.qcut%28customer_grp%255B%27TOTAL_SCORE%27%255D%252C%25205%252C%2520labels%29.values%250Alfstg_mbr_grp%255B%27CUSTOMER_VALUE%27%255D%2520%253D%2520lfstg_mbr_grp%255B%27TOTAL_SCORE%27%255D.apply%28lambda%2520x%2520%253A%2520cus_val%28x%29%29%250A%250Alfstg_mbr_grp%2520%253D%2520lfstg_mbr_grp.sort_values%28%27TOTAL_SCORE%27%252C%2520ascending%253DFalse%29.reset_index%28drop%253DTrue%29"
-  style="width: 680px; height: 629px; border:0; transform: scale(1); overflow:hidden;"
-  sandbox="allow-scripts allow-same-origin">
-</iframe>
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=python&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=import%2520pandas%2520as%2520pd%250Aimport%2520matplotlib.pyplot%2520as%2520plt%250Afrom%2520datetime%2520import%2520datetime%250Afrom%2520google.colab%2520import%2520drive%250Adrive.mount%28%27%252Fcontent%252Fdrive%252F%27%29"
+                        style="width: 500px; height: 310px; border:0; transform: scale(1); overflow:hidden;"
+                        sandbox="allow-scripts allow-same-origin">
+                    </iframe>
+                    <p>Packages needed are pandas & Matplotlib</p>
+                    <h3>2. Read the data</h3>
+                    <iframe
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=python&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=pr%2520%253D%2520pd.read_csv%28%27%252Fcontent%252Fdrive%252FMy%2520Drive%252FColabNotebooks%252FDataSample%252Fpurchase_behaviour.csv%27%29%250Atr%2520%253D%2520pd.read_csv%28%27%252Fcontent%252Fdrive%252FMy%2520Drive%252FColabNotebooks%252FDataSample%252Ftransaction_data.csv%27%29"
+                        style="width: 500px; height: 310px; border:0; transform: scale(1); overflow:hidden;"
+                        sandbox="allow-scripts allow-same-origin">
+                    </iframe>
+                    <p>So, there are two data provided, transaction data and customer data. With 264836 and 72637 lines
+                        respectively.</p>
+                    <h3>3. Check the contents of the data</h3>
+                    <br>
+                    <p>Check the data preview using the .head() method on two related dataframe. It was found that the
+                        transaction data has 8 columns (features): DATE, STORE_NBR, LYLTY_CARD_NBR, TXN_ID, PROD_NBR,
+                        PROD_NAME, PROD_QTY, TOT_SALES while the customer data has 3 columns (features): LYLTY_CARD_NBR,
+                        LIFESTAGE, PREMIUM_CUSTOMER. Hmmm, after looking at these two datasets there is one column in
+                        common that is LYLTY_CARD_NBR, so it is likely to combine both data.</p>
+                    <h3>4. Join the data</h3>
+                    <iframe
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=python&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=df%2520%253D%2520pd.merge%28tr%252C%2520pr%2520%252C%2520how%253D%27inner%27%252C%2520on%253D%27LYLTY_CARD_NBR%27%29%2520%2523inner%2520join%25202%2520dataset"
+                        style="width: 500px; height: 225px; border:0; transform: scale(1); overflow:hidden;"
+                        sandbox="allow-scripts allow-same-origin">
+                    </iframe>
+                    <p>
+                        Here the customer data is merged into the transaction data by inner join
+                    </p>
+                    <h3>5. Change the data type of DATE column</h3>
+                    <iframe
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=python&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=df%255B%27DATE%27%255D%2520%253D%2520pd.to_datetime%28df%255B%27DATE%27%255D%252C%2520origin%253D%271899-12-30%27%252C%2520unit%253D%27D%27%29"
+                        style="width: 500px; height: 225px; border:0; transform: scale(1); overflow:hidden;"
+                        sandbox="allow-scripts allow-same-origin">
+                    </iframe>
+                    <p>
+                        At the beginning that the data provided, there was a DATE column in timestamp (Unix time) with
+                        the object data type (string), this is necessary to convert it to a datetime type for easy
+                        analysis (time-series). Change the date column using the Pandas method .to_datetime() given the
+                        origin parameter ‘ 1899–12–30 ′ (because the original data is in Excel format and there is a
+                        difference in the default date value with Python, that’s why it is necessary to set this
+                        parameter). Another parameter is the unit set ‘D’ which means date.
+                    </p>
+                    <h3>6. Change the data types of remaining columns</h3>
+                    <iframe
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=python&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=df%255B%27LYLTY_CARD_NBR%27%255D%2520%253D%2520df%255B%27LYLTY_CARD_NBR%27%255D.astype%28%27str%27%29%250Adf%255B%27TXN_ID%27%255D%2520%253D%2520df%255B%27TXN_ID%27%255D.astype%28%27str%27%29%250Adf%255B%27STORE_NBR%27%255D%2520%253D%2520df%255B%27STORE_NBR%27%255D.astype%28%27str%27%29%250Adf%255B%27PROD_NBR%27%255D%2520%253D%2520df%255B%27PROD_NBR%27%255D.astype%28%27str%27%29"
+                        style="width: 500px; height: 288px; border:0; transform: scale(1); overflow:hidden;"
+                        sandbox="allow-scripts allow-same-origin">
+                    </iframe>
+                    <p>
+                        When checking the information using the .info() method, there are 4 category columns that have
+                        an integer data type (in fact this makes it easier to train a machine learning model). However,
+                        for the current analysis phase, these four columns containing the unique identities should be
+                        changed to object type (string).
+                    </p>
+                    <h3>7. Check-in more detail</h3>
+                    <br>
+                    <p>
+                        In the two continuous columns, PROD_QTY and TOT_SALES(product unit price times by PROD_QTY)
+                        there are anomalies after seeing the minimum, median, mean, and maximum values. Which the
+                        maximum value is too far from the central tendency (mean), we’ll checked it later. In the
+                        category column (the rest), there are a number of 72637 customers, 272 stores, 263127
+                        transactions, 114 products, 7 lifestage, and 3 premium customer (member status). The data itself
+                        there is no null value.
+                    </p>
+                    <br>
+                    <h3>8. Outliers Checker</h3>
+                    <iframe
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=python&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=fig%252C%2520ax%2520%253D%2520plt.subplots%28figsize%253D%2816%252C8%29%29%250Aax.scatter%28df%255B%27PROD_QTY%27%255D%252C%2520df%255B%27TOT_SALES%27%255D%29%250Aax.set_xlabel%28%27Product%2520Qty%27%29%250Aax.set_ylabel%28%27Total%2520Sales%27%29%250Aplt.show%28%29"
+                        style="width: 500px; height: 288px; border:0; transform: scale(1); overflow:hidden;"
+                        sandbox="allow-scripts allow-same-origin">
+                    </iframe>
+                    <img src="img/portfolio/RFM/outliers.jpg">
+                    <br>
+                    <p>
+                        After checking with the scatter plot, it was found that there are very clear data points and most
+                        likely to be outliers. When the data was checked, the customer only made two total transactions
+                        within a year (maybe for reselling it or for one time big party). For this reason, this data is
+                        clearly an outlier and should not be included in the analysis.
+                    </p>
+                    <br>
+                    <figure>
+                        <img src="img/portfolio/RFM/after clean.jpg">
+                        <figcaption>
+                            <center>After cleaning the outliers (look better)</center>
+                        </figcaption>
+                    </figure>
+                    <br>
+                    <h3>9. Feature extraction</h3>
+                    <iframe
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=python&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=df%255B%27Brand%27%255D%2520%253D%2520df%255B%27PROD_NAME%27%255D.str.split%28%29.str%255B0%255D%250Adf%255B%27Weight%27%255D%2520%253D%2520df%255B%27PROD_NAME%27%255D.str.extract%28r%27%28%255Cd%252B%29%27%29"
+                        style="width: 500px; height: 246px; border:0; transform: scale(1); overflow:hidden;"
+                        sandbox="allow-scripts allow-same-origin">
+                    </iframe>
+                    <p>
+                        In the PROD_NAME column, we can extract the brand name and the packaging size.
+                    </p>
+                    <br>
+                    <h3>10. Tidy up brand name</h3>
+                    <iframe
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=python&width=600&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=df%255B%27Brand%27%255D%2520%253D%2520df%255B%27Brand%27%255D.replace%28%257B%27Infzns%27%253A%2520%27Infuzions%27%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%27Smith%27%253A%2520%27Smiths%27%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%27Red%27%253A%2520%27RedRD%27%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%27RRD%27%253A%2520%27RedRD%27%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%27Dorito%27%253A%2520%27Doritos%27%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%27WW%27%253A%2520%27Woolworths%27%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%27Snbts%27%253A%2520%27Sunbites%27%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%27Grain%27%253A%2520%27Sunbites%27%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%27GrnWves%27%253A%2520%27Sunbites%27%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%27Natural%27%253A%2520%27NaturalCC%27%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%27NCC%27%253A%2520%27NaturalCC%27%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%27Burger%27%253A%2520%27BurgerR%27%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%27French%27%253A%2520%27FrenchF%27%257D%29"
+                        style="width: 600px; height: 735px; border:0; transform: scale(1); overflow:hidden;"
+                        sandbox="allow-scripts allow-same-origin">
+                    </iframe>
+                    <p>
+                        The extraction result feature, which is the brand name was found a few of them are mistakenly
+                        written and this makes the quality of the data slightly reduced (like the Sunbites brand that
+                        split into 4 brand names).
+                    </p>
+                    <br>
+                    <h3>11. Transaction and Sales Information</h3>
+                    <iframe
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=python&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=date_sales%2520%253D%2520df.groupby%28%27DATE%27%29.sum%28%29%250Adate_sales.index%2520%253D%2520pd.to_datetime%28date_sales.index%29.strftime%28%27%2525B-%2525Y%27%29%250Adate_sales%255B%27TOT_SALES%27%255D.plot%28figsize%253D%2815%252C6%29%29"
+                        style="width: 500px; height: 288px; border:0; transform: scale(1); overflow:hidden;"
+                        sandbox="allow-scripts allow-same-origin">
+                    </iframe>
+                    <br>
+                    <figure>
+                        <img src="img/portfolio/RFM/total sales sum.jpg">
+                        <figcaption>
+                            <center>Total sales graph, Month - Year (SUM)</center>
+                        </figcaption>
+                    </figure>
+                    <br>
+                    <figure>
+                        <img src="img/portfolio/RFM/total sales count.jpg">
+                        <figcaption>
+                            <center>Total sales graph, Month - Year (Count)</center>
+                        </figcaption>
+                    </figure>
+                    <br>
+                    <h3>12. Store with the highest sales</h3>
+                    <br>
+                    <img src="img/portfolio/RFM/highest selling store.jpg">
+                    <br>
+                    <p>
+                        The difference in total sales between the top 10 stores is not that obvious
+                    </p>
+                    <br>
+                    <h3>13. Store with the lowest sales</h3>
+                    <br>
+                    <img src="img/portfolio/RFM/lowest selling store.jpg">
+                    <br>
+                    <p>
+                        Something is wrong with store 211 to store 31, The difference with the store 117 seemed too far
+                        away and for a year the numbers were very small. Didn’t they bankrupt? Maybe 9 of these stores
+                        have just opened and there are still many people who don’t know or otherwise, the stores are
+                        very poorly maintained or maybe because of its location in places where life being is rare
+                        (unfortunately we are not given information regarding the exact location such as
+                        latitude-longitude/city/state).
+                    </p>
+                    <br>
+                    <h3>14. Highest Selling product</h3>
+                    <br>
+                    <img src="img/portfolio/RFM/highest selling product.jpg">
+                    <br>
+                    <p>
+                        Once again, these 10 products with the most sales are really not that obvious.
+                    </p>
+                    <br>
+                    <h3>15. Highest Selling product packaging size</h3>
+                    <br>
+                    <img src="img/portfolio/RFM/highest selling product size.jpg">
+                    <br>
+                    <p>
+                        It turns out that most customers like the 175g size (the right size which is not too big, but
+                        also not too small especially for one person).
+                    </p>
+                    <br>
+                    <h3>16. Number of customers by group</h3>
+                    <br>
+                    <img src="img/portfolio/RFM/mainstream.jpg">
+                    <br>
+                    <img src="img/portfolio/RFM/lifestage.jpg">
+                    <br>
+                    <p>
+                        The average buyer was an elderly person with mainstream membership status.
+                    </p>
+                    <br>
+                    <h3>17. Calculate Recency, Frequency, Monetary</h3>
+                    <iframe
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=python&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=last_date%2520%253D%2520pd.to_datetime%28%272019-07-01%27%29%250A%250Acustomer_grp%2520%253D%2520df.groupby%28%27LYLTY_CARD_NBR%27%252C%2520as_index%253DFalse%29.agg%28%257B%27DATE%27%253A%2520%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520lambda%2520x%253A%2520%28last_date%2520-%2520x.max%28%29%29.days%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%27TXN_ID%27%253A%2520len%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%27TOT_SALES%27%253A%2520sum%257D%29%250Alfstg_mbr_grp%2520%253D%2520df.groupby%28%255B%27LIFESTAGE%27%252C%2520%27PREMIUM_CUSTOMER%27%255D%252C%2520as_index%253DFalse%29.agg%28%257B%27DATE%27%253A%2520%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520lambda%2520x%253A%2520%28last_date%2520-%2520x.max%28%29%29.days%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%27TXN_ID%27%253A%2520len%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%27TOT_SALES%27%253A%2520sum%257D%29%250Acustomer_grp.columns%2520%253D%2520%255B%27LYLTY_CARD_NBR%27%252C%2520%27RECENCY%27%252C%2520%27FREQUENCY%27%252C%2520%27MONETARY%27%255D%250Alfstg_mbr_grp.columns%2520%253D%2520%255B%27LIFESTAGE%27%252C%2520%27MEMBER_TYPE%27%252C%2520%27RECENCY%27%252C%2520%27FREQUENCY%27%252C%2520%27MONETARY%27%255D%250Acustomer_grp.head%28%29"
+                        style="width: 500px; height: 757px; border:0; transform: scale(1); overflow:hidden;"
+                        sandbox="allow-scripts allow-same-origin">
+                    </iframe>
+                    <img src="img/portfolio/RFM/rfm raw.jpg">
+                    <br>
+                    <h3>18. Grouping the RFM</h3>
+                    <iframe
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=python&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=rang%2520%253D%2520range%284%252C0%252C-1%29%250Arang1%2520%253D%2520range%281%252C%25205%29%250Aq%253D4%250A%250Adef%2520freq%28x%29%2520%253A%250A%2520%2520y%2520%253D%25200%250A%2520%2520if%2520x%2520%253C%25205%2520%253A%2520%250A%2520%2520%2520%2520y%2520%253D%25201%250A%2520%2520elif%2520x%2520%253C%25209%2520%253A%250A%2520%2520%2520%2520y%2520%253D%25202%250A%2520%2520elif%2520x%2520%253C%252014%2520%253A%250A%2520%2520%2520%2520y%2520%253D%25203%250A%2520%2520else%2520%253A%250A%2520%2520%2520%2520y%2520%253D%25204%250A%2520%2520return%2520y%250A%250Acustomer_grp%255B%27R%27%255D%2520%253D%2520pd.qcut%28customer_grp%255B%27RECENCY%27%255D%252C%2520q%252C%2520rang%29.values.astype%28int%29%250Acustomer_grp%255B%27F%27%255D%2520%253D%2520customer_grp%255B%27FREQUENCY%27%255D.apply%28lambda%2520x%2520%253A%2520freq%28x%29%29%250Acustomer_grp%255B%27M%27%255D%2520%253D%2520pd.qcut%28customer_grp%255B%27MONETARY%27%255D%252C%2520q%252C%2520rang1%29.values.astype%28int%29%250A%250Alfstg_mbr_grp%255B%27R%27%255D%2520%253D%25204%250Alfstg_mbr_grp%255B%27F%27%255D%2520%253D%2520pd.qcut%28lfstg_mbr_grp%255B%27FREQUENCY%27%255D%252C%2520q%252C%2520rang1%29.values.astype%28int%29%250Alfstg_mbr_grp%255B%27M%27%255D%2520%253D%2520pd.qcut%28lfstg_mbr_grp%255B%27MONETARY%27%255D%252C%2520q%252C%2520rang1%29.values.astype%28int%29%250A%250Acustomer_grp.head%28%29"
+                        style="width: 500px; height: 927px; border:0; transform: scale(1); overflow:hidden;"
+                        sandbox="allow-scripts allow-same-origin">
+                    </iframe>
+                    <br>
+                    <img src="img/portfolio/RFM/rfm2.jpg">
+                    <br>
+                    <p>
+                        Here the calculated RFM is grouped into 4 to facilitate the analysis process.
+                    </p>
+                    <br>
+                    <h3>19. Add the value of each customer</h3>
+                    <iframe
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=python&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=cust_labels%2520%253D%2520%255B%27VERY%2520LOW%27%252C%2520%27LOW%27%252C%2520%27MEDIUM%27%252C%2520%27HIGH%27%252C%2520%27VERY%2520HIGH%27%255D%250Alfstg_mbr_grp%255B%27CUSTOMER_VALUE%27%255D%2520%253D%2520lfstg_mbr_grp%255B%27RFM_SCORE%27%255D.apply%28lambda%2520x%253A%2520%27VERY%2520HIGH%27%2520if%2520x%2520%253D%253D%252012%2520%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520else%28%27HIGH%27%2520if%2520x%2520%253D%253D%252010%2520%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520else%28%27MEDIUM%27%2520if%2520x%2520%253D%253D%25208%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520else%2520%27LOW%27%29%29%29%250Acustomer_grp%255B%27CUSTOMER_VALUE%27%255D%2520%253D%2520pd.qcut%28customer_grp%255B%27RFM_SCORE%27%255D%252C%25205%252C%2520cust_labels%29.values%250Alfstg_mbr_grp%2520%253D%2520lfstg_mbr_grp.sort_values%28%27RFM_SCORE%27%252C%2520ascending%253DFalse%29.reset_index%28drop%253DTrue%29"
+                        style="width: 500px; height: 544px; border:0; transform: scale(1); overflow:hidden;"
+                        sandbox="allow-scripts allow-same-origin">
+                    </iframe>
+                    <br>
+                    <img src="img/portfolio/RFM/customer_grp.jpg">
+                    <br>
+                    <p>
+                        Each customer will be given their respective values ​​based on the RFM value from 5 categories
+                        (‘VERY LOW’, ‘LOW’, ‘MEDIUM’, ‘HIGH’, ‘VERY HIGH’) while for each lifestage and membership only
+                        given 4 categories (same as before without the ‘VERY LOW’ category).
+                    </p>
+                    <br>
+                    <h3>20. The most valuable customer</h3>
+                    <iframe
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=python&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=top_customer%2520%253D%2520customer_grp%255Bcustomer_grp%255B%27CUSTOMER_VALUE%27%255D%2520%253D%253D%2520%27Very%2520High%27%255D%250Atop_customer%255B%27RECENCY%27%255D%2520%253D%2520-%28top_customer%255B%27RECENCY%27%255D%29%2520%2523%2520For%2520filtering%2520purpose%2520%28descending%29%250Atop_customer%2520%253D%2520top_customer.sort_values%28%255B%27TOTAL_SCORE%27%252C%2520%27RECENCY%27%252C%2520%27FREQUENCY%27%252C%2520%27MONETARY%27%255D%252C%2520ascending%253DFalse%29%250Atop_customer.head%2810%29"
+                        style="width: 500px; height: 416px; border:0; transform: scale(1); overflow:hidden;"
+                        sandbox="allow-scripts allow-same-origin">
+                    </iframe>
+                    <br>
+                    <img src="img/portfolio/RFM/final.jpg">
+                    <br>
+                    <h4>Last Summary:</h4>
+                    <br>
+                    <p>
+                        Focused on these seven categories (“THE MOST VALUABLE” Customers) :
+                        <br>
+                        <ul>
+                            <li>Budget — Older Singles/Couples</li>
+                            <li>Budget — Older Families</li>
+                            <li>Budget — Young Families</li>
+                            <li>Mainstream — Retirees</li>
+                            <li>Mainstream — Young Singles/Couples</li>
+                            <li>Premium — Retirees</li>
+                            <li>Premium — Older Singles/Couples</li>
+                        </ul>
+                        <br>
+                        with top four brands : 
+                        <br>
+                        <ul>
+                            <li>Kettle</li>
+                            <li>Smiths</li>
+                            <li>Doritos</li>
+                            <li>Pringles</li>
+                        </ul>
+                        <br>
+                        and top three sizes of the products :
+                        <br>
+                        <ul>
+                            <li>175g</li>
+                            <li>150g</li>
+                            <li>134g</li>
+                        </ul> 
+                    </p>
+                    <br>
+
+
+
                 </div>
 
                 <!-- <div class="portfolio-page-video embed-responsive embed-responsive-16by9">
