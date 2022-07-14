@@ -1,0 +1,380 @@
+<div id="ajax-page" class="ajax-page-content">
+    <div class="ajax-page-wrapper">
+        <div class="ajax-page-nav">
+            <div class="nav-item ajax-page-prev-next">
+                <a class="ajax-page-load" href="portfolio-3.html"><i class="lnr lnr-chevron-left"></i></a>
+                <a class="ajax-page-load" href="portfolio-1.html"><i class="lnr lnr-chevron-right"></i></a>
+            </div>
+            <div class="nav-item ajax-page-close-button">
+                <a id="ajax-page-close-button" href="#"><i class="lnr lnr-cross"></i></a>
+            </div>
+        </div>
+
+        <div class="ajax-page-title">
+            <h1>Breast Cancer Prediction</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-8 col-md-8 portfolio-block">
+                <div class="owl-carousel portfolio-page-carousel">
+                    <div class="item">
+                        <img src="img/portfolio/breast-cancer.jpg" alt="" />
+                    </div>
+                    <!-- <div class="item">
+                        <img src="img/portfolio/full/2.jpg" alt="" />
+                    </div>
+                    <div class="item">
+                        <img src="img/portfolio/full/3.jpg" alt="" />
+                    </div> -->
+                </div>
+
+                <div class="deskr">
+                    <p>
+                        In this opportunity, we will conduct an experiment to create a machine model that can predict
+                        whether a person has malignant breast cancer or not based on several features. The dataset we
+                        use is from <b><a
+                                href="https://archive.ics.uci.edu/ml/datasets/breast+cancer+wisconsin+(diagnostic)">Wisconsin
+                                (Diagnostic) Data Set</a></b> or can be downloaded from <b><a
+                                href="https://drive.google.com/file/d/1IZiD-23aWO_kr_YmUExGK0l7LhFPHTGy/view?usp=sharing">here</a></b>
+                    </p>
+                    <p>
+                    <ul>Attribute Information:</ul>
+
+                    <li>ID number</li>
+                    <li>Diagnosis (M = malignant, B = benign)<b>(As Target)</b></li>
+                    <br>
+                    <ul>Ten real-valued features are computed for each cell nucleus:<b>(As Feature)</b></ul>
+
+                    <li>a) radius (mean of distances from center to points on the perimeter)</li>
+                    <li>b) texture (standard deviation of gray-scale values)</li>
+                    <li>c) perimeter</li>
+                    <li>d) area</li>
+                    <li>e) smoothness (local variation in radius lengths)</li>
+                    <li>f) compactness (perimeter^2 / area - 1.0)</li>
+                    <li>g). concavity (severity of concave portions of the contour)</li>
+                    <li>h). concave points (number of concave portions of the contour)</li>
+                    <li>i). symmetry</li>
+                    <li>j). fractal dimension ("coastline approximation" - 1)</li>
+                    </p>
+                    <br>
+
+                    <h3>Load the Libraries</h3>
+                    <br>
+                    <p>
+                        <iframe
+                            src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=python&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=import%2520numpy%2520as%2520np%250Aimport%2520pandas%2520as%2520pd%250A%250Aimport%2520matplotlib.pyplot%2520as%2520plt%250Aimport%2520matplotlib.gridspec%2520as%2520gridspec%250Aimport%2520mpld3%2520as%2520mpl%250A%250Afrom%2520sklearn.model_selection%2520import%2520train_test_split%250Afrom%2520sklearn%2520import%2520model_selection%250Afrom%2520sklearn.linear_model%2520import%2520LogisticRegression%250Afrom%2520sklearn.ensemble%2520import%2520RandomForestClassifier%250Afrom%2520sklearn.tree%2520import%2520DecisionTreeClassifier%252C%2520export_graphviz%250Afrom%2520sklearn%2520import%2520metrics%250A%250Afrom%2520google.colab%2520import%2520drive%250Adrive.mount%28%27%252Fcontent%252Fdrive%252F%27%29"
+                            style="width: 500px; height: 550px; border:0; transform: scale(1); overflow:hidden;"
+                            sandbox="allow-scripts allow-same-origin">
+                        </iframe>
+                    </p>
+                    <br>
+                    <h3>Load dataset</h3>
+                    <p>
+                        <iframe
+                            src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=python&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=df%2520%253D%2520pd.read_csv%28%27%252Fcontent%252Fdrive%252FMy%2520Drive%252FColabNotebooks%252FDataSample%252Fwisconsin.csv%27%29%250Adf.head%28%29"
+                            style="width: 500px; height: 246px; border:0; transform: scale(1); overflow:hidden;"
+                            sandbox="allow-scripts allow-same-origin">
+                        </iframe>
+                    </p><br>
+                    <img src="img/portfolio/breast cancer/1dataset.png">
+                    <br>
+                    <h3>Clean data</h3>
+                    <br>
+                    <p>
+                        We dont need "id" and "unnamed:32" column so we will drop them, the dataset now consist of 569
+                        rows and 31 columns. Also we have labels / target for each sample (M = malignant, B = benign)
+                    </p><br>
+                    <p>
+                        <iframe
+                            src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=python&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=df.drop%28%27id%27%252Caxis%253D1%252Cinplace%253DTrue%29%250Adf.drop%28%27Unnamed%253A%252032%27%252Caxis%253D1%252Cinplace%253DTrue%29%250A%250Aprint%28df.diagnosis.unique%28%29%29%250Aprint%28df.shape%29"
+                            style="width: 500px; height: 300px; border:0; transform: scale(1); overflow:hidden;"
+                            sandbox="allow-scripts allow-same-origin">
+                        </iframe>
+                    </p>
+                    <br>
+                    <p>because our target is still a categorical type, we will first convert it to binary type so that
+                        it can
+                        be recognized by the computer. Therefore we will use the LabelBinarizer library</p>
+                    <br>
+                    <p>
+                        <iframe
+                            src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=python&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=from%2520sklearn.preprocessing%2520import%2520LabelBinarizer%250A%250ALB%2520%253D%2520LabelBinarizer%28%29%250A%250Adf%255B%27diagnosis%27%255D%2520%253D%2520LB.fit_transform%28df%255B%27diagnosis%27%255D%29"
+                            style="width: 500px; height: 300px; border:0; transform: scale(1); overflow:hidden;"
+                            sandbox="allow-scripts allow-same-origin">
+                        </iframe>
+                    </p>
+                    <br>
+                    <h3>Explore data</h3>
+                    <br>
+                    <p>
+                        <iframe
+                            src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=python&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=df.describe%28%29"
+                            style="width: 500px; height: 200px; border:0; transform: scale(1); overflow:hidden;"
+                            sandbox="allow-scripts allow-same-origin">
+                        </iframe>
+                    </p>
+                    <br>
+                    <img src="img/portfolio/breast cancer/explore.png">
+                    <br>
+                    <p>
+                        <iframe
+                            src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=python&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=plt.hist%28df%255B%27diagnosis%27%255D%29%250Aplt.title%28%27Diagnosis%2520%28M%253D1%2520%252C%2520B%253D0%29%27%29%250Aplt.show%28%29"
+                            style="width: 500px; height: 245px; border:0; transform: scale(1); overflow:hidden;"
+                            sandbox="allow-scripts allow-same-origin">
+                        </iframe>
+                    </p>
+                    <img src="img/portfolio/breast cancer/m and b.png">
+                    <br>
+                    <h3>Finding correlation between feature and target</h3>
+                    <br>
+                    <p>
+                        <iframe
+                            src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=python&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=features_mean%253Dlist%28df.columns%255B1%253A11%255D%29%250A%2523%2520split%2520dataframe%2520into%2520two%2520based%2520on%2520diagnosis%250AdfM%253Ddf%255Bdf%255B%27diagnosis%27%255D%2520%253D%253D1%255D%250AdfB%253Ddf%255Bdf%255B%27diagnosis%27%255D%2520%253D%253D0%255D%250A%250A%2523Stack%2520the%2520data%250Aplt.rcParams.update%28%257B%27font.size%27%253A%25208%257D%29%250Afig%252C%2520axes%2520%253D%2520plt.subplots%28nrows%253D5%252C%2520ncols%253D2%252C%2520figsize%253D%288%252C10%29%29%250Aaxes%2520%253D%2520axes.ravel%28%29%250Afor%2520idx%252Cax%2520in%2520enumerate%28axes%29%253A%250A%2520%2520%2520%2520ax.figure%250A%2520%2520%2520%2520binwidth%253D%2520%28max%28df%255Bfeatures_mean%255Bidx%255D%255D%29%2520-%2520min%28df%255Bfeatures_mean%255Bidx%255D%255D%29%29%252F50%250A%2520%2520%2520%2520ax.hist%28%255BdfM%255Bfeatures_mean%255Bidx%255D%255D%252CdfB%255Bfeatures_mean%255Bidx%255D%255D%255D%252C%2520bins%253Dnp.arange%28min%28df%255Bfeatures_mean%255Bidx%255D%255D%29%252C%2520max%28df%255Bfeatures_mean%255Bidx%255D%255D%29%2520%252B%2520binwidth%252C%2520binwidth%29%2520%252C%2520alpha%253D0.5%252Cstacked%253DTrue%252C%2520normed%2520%253D%2520True%252C%2520label%253D%255B%27M%27%252C%27B%27%255D%252Ccolor%253D%255B%27r%27%252C%27g%27%255D%29%250A%2520%2520%2520%2520ax.legend%28loc%253D%27upper%2520right%27%29%250A%2520%2520%2520%2520ax.set_title%28features_mean%255Bidx%255D%29%250Aplt.tight_layout%28%29%250Aplt.show%28%29"
+                            style="width: 500px; height: 713px; border:0; transform: scale(1); overflow:hidden;"
+                            sandbox="allow-scripts allow-same-origin">
+                        </iframe>
+                    </p>
+                    <img src="img/portfolio/breast cancer/result.png">
+                    <br>
+                    <h4>Observations</h4>
+                    <br>
+                    <p>
+                        1. Mean values of cell radius, perimeter, area, compactness, concavity and concave points can be
+                        used in classification of the cancer. Larger values of these parameters tends to show a
+                        correlation with malignant tumors.
+
+                    </p>
+                    <p>
+
+                        2. Mean values of texture, smoothness, symmetry or fractual dimension does not show a particular
+                        preference of one diagnosis over the other. In any of the histograms there are no noticeable
+                        large outliers that warrants further cleanup.
+                    </p>
+                    <br>
+                    <h3>Creating a test set and a training set</h3>
+                    <br>
+                    <p>70:30 split to create a training data set and a test data set.
+                        <iframe
+                            src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=python&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=traindf%252C%2520testdf%2520%253D%2520train_test_split%28df%252C%2520test_size%2520%253D%25200.3%29"
+                            style="width: 500px; height: 224px; border:0; transform: scale(1); overflow:hidden;"
+                            sandbox="allow-scripts allow-same-origin">
+                        </iframe>
+                    </p>
+                    <br>
+                    <h3>Classification Model</h3>
+                    <br>
+                    <p>Here we are going to build a classification model and evaluate its performance using the training
+                        set.
+
+                    </p>
+                    <p>
+                        <iframe
+                            src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=python&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=def%2520classification_model%28model%252C%2520data%252C%2520predictors%252C%2520outcome%29%253A%250A%2520%2520%2523Fit%2520the%2520model%253A%250A%2520%2520model.fit%28data%255Bpredictors%255D%252Cdata%255Boutcome%255D%29%250A%2520%2520%250A%2520%2520%2523Make%2520predictions%2520on%2520training%2520set%253A%250A%2520%2520predictions%2520%253D%2520model.predict%28data%255Bpredictors%255D%29%250A%2520%2520%250A%2520%2520%2523Print%2520accuracy%250A%2520%2520accuracy%2520%253D%2520metrics.accuracy_score%28predictions%252Cdata%255Boutcome%255D%29%250A%2520%2520print%28%2522Accuracy%2520%253A%2520%2525s%2522%2520%2525%2520%2522%257B0%253A.3%2525%257D%2522.format%28accuracy%29%29%250A%250A%2520%2520%2523Perform%2520k-fold%2520cross-validation%2520with%25205%2520folds%250A%2520%2520kf%2520%253D%2520model_selection.KFold%285%29%250A%2520%2520error%2520%253D%2520%255B%255D%250A%2520%2520for%2520train%252C%2520test%2520in%2520kf.split%28data%29%253A%250A%2520%2520%2520%2520%2523%2520Filter%2520training%2520data%250A%2520%2520%2520%2520train_predictors%2520%253D%2520%28data%255Bpredictors%255D.iloc%255Btrain%252C%253A%255D%29%250A%2520%2520%2520%2520%250A%2520%2520%2520%2520%2523%2520The%2520target%2520we%27re%2520using%2520to%2520train%2520the%2520algorithm.%250A%2520%2520%2520%2520train_target%2520%253D%2520data%255Boutcome%255D.iloc%255Btrain%255D%250A%2520%2520%2520%2520%250A%2520%2520%2520%2520%2523%2520Training%2520the%2520algorithm%2520using%2520the%2520predictors%2520and%2520target.%250A%2520%2520%2520%2520model.fit%28train_predictors%252C%2520train_target%29%250A%2520%2520%2520%2520%250A%2520%2520%2520%2520%2523Record%2520error%2520from%2520each%2520cross-validation%2520run%250A%2520%2520%2520%2520error.append%28model.score%28data%255Bpredictors%255D.iloc%255Btest%252C%253A%255D%252C%2520data%255Boutcome%255D.iloc%255Btest%255D%29%29%250A%2520%2520%2520%2520%250A%2520%2520%2520%2520print%28%2522Cross-Validation%2520Score%2520%253A%2520%2525s%2522%2520%2525%2520%2522%257B0%253A.3%2525%257D%2522.format%28np.mean%28error%29%29%29%250A%2520%2520%2520%2520%250A%2520%2520%2523Fit%2520the%2520model%2520again%2520so%2520that%2520it%2520can%2520be%2520refered%2520outside%2520the%2520function%253A%250A%2520%2520model.fit%28data%255Bpredictors%255D%252Cdata%255Boutcome%255D%29%2520"
+                            style="width: 500px; height: 1053px; border:0; transform: scale(1); overflow:hidden;"
+                            sandbox="allow-scripts allow-same-origin">
+                        </iframe>
+                    </p>
+                    <br>
+                    <h4>Logistic Regression</h4>
+                    <br>
+                    <p>Logistic regression is widely used for classification of discrete data. In this case we will use
+                        it for binary (1,0) classification.</p>
+                    <p>Based on the observations in the histogram plots, we can reasonably hypothesize that the cancer
+                        diagnosis depends on the mean cell radius, mean perimeter, mean area, mean compactness, mean
+                        concavity and mean concave points. We can then perform a logistic regression analysis using
+                        those features as follows:</p>
+                    <p>
+                        <iframe
+                            src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=python&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=predictor_var%2520%253D%2520%255B%27radius_mean%27%252C%27perimeter_mean%27%252C%27area_mean%27%252C%27compactness_mean%27%252C%27concave%2520points_mean%27%255D%250Aoutcome_var%253D%27diagnosis%27%250Amodel%253DLogisticRegression%28%29%250Aclassification_model%28model%252Ctraindf%252Cpredictor_var%252Coutcome_var%29"
+                            style="width: 500px; height: 330px; border:0; transform: scale(1); overflow:hidden;"
+                            sandbox="allow-scripts allow-same-origin">
+                        </iframe>
+                    </p>
+                    <br>
+                    <img src="img/portfolio/breast cancer/logisticregression.png">
+                    <br>
+                    <p>
+                        The prediction accuracy is reasonable. What happens if we use just one predictor? Use the
+                        mean_radius:
+                    </p>
+                    <br>
+                    <iframe
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=python&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=predictor_var%2520%253D%2520%255B%27radius_mean%27%255D%250Amodel%253DLogisticRegression%28%29%250Aclassification_model%28model%252Ctraindf%252Cpredictor_var%252Coutcome_var%29"
+                        style="width: 500px; height: 266px; border:0; transform: scale(1); overflow:hidden;"
+                        sandbox="allow-scripts allow-same-origin">
+                    </iframe>
+                    <br>
+                    <img src="img/portfolio/breast cancer/logisticregression1.png">
+                    <br>
+                    <p>
+                        This gives a similar prediction accuracy and a cross-validation score.
+
+                        The accuracy of the predictions are good but not great. The cross-validation scores are
+                        reasonable. Can we do better with another model?
+                    </p>
+                    <br>
+                    <h3>Decision Tree Model</h3>
+                    <br>
+                    <iframe
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=python&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=model%2520%253D%2520DecisionTreeClassifier%28%29%250Aclassification_model%28model%252Ctraindf%252Cpredictor_var%252Coutcome_var%29"
+                        style="width: 500px; height: 245px; border:0; transform: scale(1); overflow:hidden;"
+                        sandbox="allow-scripts allow-same-origin">
+                    </iframe>
+                    <br>
+                    <img src="img/portfolio/breast cancer/decisiontree.png">
+                    <br>
+                    <p>
+                        Here we are over-fitting the model probably due to the large number of predictors. Let use a
+                        single predictor, the obvious one is the radius of the cell.
+                    </p>
+                    <br>
+                    <iframe
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=python&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=predictor_var%2520%253D%2520%255B%27radius_mean%27%255D%250Amodel%2520%253D%2520DecisionTreeClassifier%28%29%250Aclassification_model%28model%252Ctraindf%252Cpredictor_var%252Coutcome_var%29"
+                        style="width: 500px; height: 266px; border:0; transform: scale(1); overflow:hidden;"
+                        sandbox="allow-scripts allow-same-origin">
+                    </iframe>
+                    <br>
+                    <img src="img/portfolio/breast cancer/decisiontree1.png">
+                    <br>
+                    <p>
+                        The accuracy of the prediction is much much better here. But does it depend on the predictor?
+                    </p>
+                    <p>
+                        Using a single predictor gives a 97% prediction accuracy for this model but the cross-validation
+                        score is not that great.
+                    </p>
+                    <br>
+                    <h3>Random Forest</h3>
+                    <br>
+                    <iframe
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=python&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=predictor_var%2520%253D%2520features_mean%250Amodel%2520%253D%2520RandomForestClassifier%28n_estimators%253D100%252Cmin_samples_split%253D25%252C%2520max_depth%253D7%252C%2520max_features%253D2%29%250Aclassification_model%28model%252C%2520traindf%252Cpredictor_var%252Coutcome_var%29"
+                        style="width: 500px; height: 309px; border:0; transform: scale(1); overflow:hidden;"
+                        sandbox="allow-scripts allow-same-origin">
+                    </iframe>
+                    <br>
+                    <img src="img/portfolio/breast cancer/randomforest.png">
+                    <br>
+                    <p>
+                        Using all the features improves the prediction accuracy and the cross-validation score is great.
+                    </p>
+                    <p>An advantage with Random Forest is that it returns a feature importance matrix which can be used
+                        to select features. So lets select the top 5 features and use them as predictors.</p>
+                    <br>
+                    <iframe
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=python&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=%2523Create%2520a%2520series%2520with%2520feature%2520importances%253A%250Afeatimp%2520%253D%2520pd.Series%28model.feature_importances_%252C%2520index%253Dpredictor_var%29.sort_values%28ascending%253DFalse%29%250Aprint%28featimp%29"
+                        style="width: 500px; height: 266px; border:0; transform: scale(1); overflow:hidden;"
+                        sandbox="allow-scripts allow-same-origin">
+                    </iframe>
+                    <br>
+                    <img src="img/portfolio/breast cancer/importants.png">
+                    <br>
+                    <iframe
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=python&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=%2523%2520Using%2520top%25205%2520features%250Apredictor_var%2520%253D%2520%255B%27concave%2520points_mean%27%252C%27area_mean%27%252C%27radius_mean%27%252C%27perimeter_mean%27%252C%27concavity_mean%27%252C%255D%250Amodel%2520%253D%2520RandomForestClassifier%28n_estimators%253D100%252C%2520min_samples_split%253D25%252C%2520max_depth%253D7%252C%2520max_features%253D2%29%250Aclassification_model%28model%252Ctraindf%252Cpredictor_var%252Coutcome_var%29"
+                        style="width: 500px; height: 372px; border:0; transform: scale(1); overflow:hidden;"
+                        sandbox="allow-scripts allow-same-origin">
+                    </iframe>
+                    <br>
+                    <img src="img/portfolio/breast cancer/randomforestimp.png">
+                    <br>
+                    <p>Using the top 5 features only changes the prediction accuracy a bit but I think we get a better
+                        result if we use all the predictors.</p>
+                    <br>
+                    <h3>Test data set</h3>
+                    <br>
+                    <p>
+                        Now we know the best model for out data is using Random Forest
+                    </p>
+                    <iframe
+                        src="https://carbon.now.sh/embed?bg=rgba%28255%2C255%2C255%2C1%29&t=blackboard&wt=none&l=python&width=500&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=62px&ph=25px&ln=false&fl=1&fm=Fira+Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code=predictor_var%2520%253D%2520features_mean%250Amodel%2520%253D%2520RandomForestClassifier%28n_estimators%253D100%252Cmin_samples_split%253D25%252C%2520max_depth%253D7%252C%2520max_features%253D2%29%250Aclassification_model%28model%252C%2520testdf%252C%2520predictor_var%252C%2520outcome_var%29"
+                        style="width: 500px; height: 309px; border:0; transform: scale(1); overflow:hidden;"
+                        sandbox="allow-scripts allow-same-origin">
+                    </iframe>
+                    <br>
+                    <img src="img/portfolio/breast cancer/randomforesttestdata.png">
+                    <br>
+                    <p>The prediction accuracy for the test data set using the above Random Forest model is 95%!</p>
+                    <br>
+                    <h3>Conclusion</h3>
+                    <br>
+                    <p>The best model to be used for diagnosing breast cancer as found in this analysis is the Random
+                        Forest model with the top 5 predictors, 'concave
+                        points_mean','area_mean','radius_mean','perimeter_mean','concavity_mean'. It gives a prediction
+                        accuracy of ~95% and a cross-validation score ~ 91-100% for the test data set.</p>
+                </div>
+
+                <!-- <div class="portfolio-page-video embed-responsive embed-responsive-16by9">
+                  <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/97102654?autoplay=0"></iframe>
+                </div> -->
+
+
+
+                <script type="text/javascript">
+                    jQuery(document).ready(function ($) {
+                        $('.portfolio-page-carousel').imagesLoaded(function () {
+                            $('.portfolio-page-carousel').owlCarousel({
+                                smartSpeed: 1200,
+                                items: 1,
+                                loop: true,
+                                dots: true,
+                                nav: true,
+                                navText: false,
+                                margin: 10,
+                                autoHeight: true
+                            });
+                        });
+                    });
+                </script>
+            </div>
+
+            <div class="col-sm-4 col-md-4 portfolio-block">
+                <!-- Project Description -->
+                <div class="project-description">
+                    <div class="block-title">
+                        <h3>Description</h3>
+                    </div>
+                    <ul class="project-general-info">
+                        <li>
+                            <p><i class="fa fa-user"></i> William</p>
+                        </li>
+                        <!-- <li><p><i class="fa fa-globe"></i> <a href="#" target="_blank">www.project-site.com</a></p></li> -->
+                        <li>
+                            <p><i class="fa fa-calendar"></i> 7 July, 2022</p>
+                        </li>
+                    </ul>
+
+                    <p class="text-justify">Breast Cancer Preidction</p>
+                    <!-- /Project Description -->
+
+                    <!-- Technology -->
+                    <div class="tags-block">
+                        <div class="block-title">
+                            <h3>Technology</h3>
+                        </div>
+                        <ul class="tags">
+                            <li><a>Python</a></li>
+                            <li><a>Pandas</a></li>
+                            <li><a>LabelBinarizer</a></li>
+                            <li><a>LogisticRegression</a></li>
+                            <li><a>RandomForestClassifier</a></li>
+                            <li><a>DecisionTreeClassifier</a></li>
+                            <li><a>Matplotlib</a></li>
+                        </ul>
+                    </div>
+                    <!-- /Technology -->
+
+                    <!-- Share Buttons -->
+                    <div class="btn-group share-buttons">
+                        <div class="block-title">
+                            <h3>Share</h3>
+                        </div>
+                        <a href="#" target="_blank" class="btn"><i class="fab fa-facebook-f"></i> </a>
+                        <a href="#" target="_blank" class="btn"><i class="fab fa-twitter"></i> </a>
+                        <a href="#" target="_blank" class="btn"><i class="fab fa-dribbble"></i> </a>
+                    </div>
+                    <!-- /Share Buttons -->
+                </div>
+                <!-- Project Description -->
+            </div>
+        </div>
+    </div>
+</div>
