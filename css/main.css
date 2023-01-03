@@ -1302,9 +1302,9 @@ textarea.form-control, textarea.form-control:focus {
   width: 90%;
 }
 
-.skills-second-style .skill-container.skill-4 .skill-percentage {
+/* .skills-second-style .skill-container.skill-4 .skill-percentage {
   width: 75%;
-}
+} */
 
 .skills-second-style .skill-container.skill-5 .skill-percentage {
   width: 80%;
